@@ -155,6 +155,16 @@ function getItemIconPath(item?: InventoryItem | null): string | null {
     if (item.fruitId === 'suke-suke') return '/icons/akuma_suke.png';
     if (item.fruitId === 'bane-bane') return '/icons/akuma_bane.png';
     if (item.fruitId === 'noro-noro') return '/icons/akuma_noro.png';
+    if (item.fruitId === 'doru-doru') return '/icons/akuma_doru.png';
+    if (item.fruitId === 'neko-neko') return '/icons/akuma_neko.png';
+    if (item.fruitId === 'ushi-ushi') return '/icons/akuma_ushi_bisao.png';
+    if (item.fruitId === 'gomu-gomu') return '/icons/akuma_gomu.png';
+    if (item.fruitId === 'moku-moku') return '/icons/akuma_moku.png';
+    if (item.fruitId === 'suna-suna') return '/icons/akuma_suna.png';
+    if (item.fruitId === 'bari-bari') return '/icons/akuma_bari.png';
+    if (item.fruitId === 'mera-mera') return '/icons/akuma_mera.png';
+    if (item.fruitId === 'goro-goro') return '/icons/akuma_goro.png';
+    if (item.fruitId === 'pika-pika') return '/icons/akuma_pika.png';
     const fruit = (fruitsData as unknown as DevilFruit[]).find((f) => f.id === item.fruitId);
     if (fruit?.iconPath) return fruit.iconPath;
     if (fruit?.spriteUrl) return fruit.spriteUrl;
@@ -225,6 +235,128 @@ const INTERACTIVE_SLOTS: InteractiveSlotConfig[] = [
   },
 ];
 
+interface DevilFruitTooltipProps {
+  fruit: DevilFruit;
+  positionClasses: string;
+  arrowClasses: string;
+  isEquipped?: boolean;
+  activeEquippedFruitName?: string;
+}
+
+function DevilFruitTooltip({
+  fruit,
+  positionClasses,
+  arrowClasses,
+  isEquipped,
+  activeEquippedFruitName,
+}: DevilFruitTooltipProps) {
+  const strBonus =
+    fruit.statMultipliers.strengthMultiplier && fruit.statMultipliers.strengthMultiplier > 1
+      ? ((fruit.statMultipliers.strengthMultiplier - 1) * 100).toFixed(1).replace('.0', '')
+      : null;
+  const agiBonus =
+    fruit.statMultipliers.agilityMultiplier && fruit.statMultipliers.agilityMultiplier > 1
+      ? ((fruit.statMultipliers.agilityMultiplier - 1) * 100).toFixed(1).replace('.0', '')
+      : null;
+  const resBonus =
+    fruit.statMultipliers.resistanceMultiplier && fruit.statMultipliers.resistanceMultiplier > 1
+      ? ((fruit.statMultipliers.resistanceMultiplier - 1) * 100).toFixed(1).replace('.0', '')
+      : null;
+
+  return (
+    <div
+      className={`absolute z-[9999] w-72 sm:w-80 p-3.5 bg-slate-950/95 border-2 border-purple-500/90 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.95),0_0_30px_rgba(168,85,247,0.4)] backdrop-blur-xl text-left pointer-events-none animate-fade-in space-y-2.5 ${positionClasses}`}
+    >
+      {/* Seta Indicadora Apontando para o Slot */}
+      <div
+        className={`absolute w-3.5 h-3.5 bg-slate-950 border-purple-500/90 transform rotate-45 ${arrowClasses}`}
+      />
+
+      {/* Cabeçalho do Tooltip */}
+      <div className="flex items-center justify-between border-b border-purple-900/60 pb-1.5">
+        <span className="text-[11px] font-black uppercase tracking-wider text-purple-300 flex items-center gap-1.5">
+          <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+          <span>Detalhes & Passivas</span>
+        </span>
+        <div className="flex items-center space-x-1.5">
+          {fruit.rarity && (
+            <span className="text-[9px] uppercase font-black px-1.5 py-0.5 rounded bg-purple-900/50 border border-purple-700 text-purple-200">
+              {fruit.rarity}
+            </span>
+          )}
+          <span className="text-[10px] text-purple-300 font-bold px-2 py-0.5 rounded bg-purple-950/80 border border-purple-800">
+            {fruit.category}
+          </span>
+        </div>
+      </div>
+
+      {/* Nome Canônico e Romaji */}
+      <div>
+        <h4 className="text-sm font-black text-purple-100 tracking-wide">{fruit.name}</h4>
+        <p className="text-[11px] text-purple-300/80 italic font-medium">
+          {fruit.englishMeaning} {fruit.romajiName ? `• ${fruit.romajiName}` : ''}
+        </p>
+      </div>
+
+      {/* Descrição Narrativa */}
+      <p className="text-xs text-slate-200 leading-relaxed">{fruit.description}</p>
+
+      {/* Bônus Passivos Concedidos (Sem Inteligência) */}
+      <div className="pt-1.5 border-t border-purple-900/60 space-y-1">
+        <span className="text-[10px] font-bold text-purple-300/80 uppercase tracking-wider block">
+          Bônus Passivos Concedidos:
+        </span>
+        <div className="grid grid-cols-2 gap-1.5 text-[11px]">
+          {strBonus && (
+            <div className="text-amber-300 bg-amber-950/40 px-2 py-1 rounded-lg border border-amber-500/30 flex items-center justify-between">
+              <span>Força:</span>
+              <strong className="text-amber-200 font-bold">+{strBonus}%</strong>
+            </div>
+          )}
+          {agiBonus && (
+            <div className="text-cyan-300 bg-cyan-950/40 px-2 py-1 rounded-lg border border-cyan-500/30 flex items-center justify-between">
+              <span>Agilidade:</span>
+              <strong className="text-cyan-200 font-bold">+{agiBonus}%</strong>
+            </div>
+          )}
+          {resBonus && (
+            <div className="text-rose-300 bg-rose-950/40 px-2 py-1 rounded-lg border border-rose-500/30 flex items-center justify-between">
+              <span>Resistência:</span>
+              <strong className="text-rose-200 font-bold">+{resBonus}%</strong>
+            </div>
+          )}
+          {!strBonus && !agiBonus && !resBonus && (
+            <div className="col-span-2 text-purple-300/70 bg-purple-950/30 px-2 py-1 rounded-lg border border-purple-900/40 text-[10px] italic">
+              Concede poderes e habilidades elementares únicas.
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Status no Pirata & Valor em Berries */}
+      <div className="pt-1.5 border-t border-purple-900/60 flex items-center justify-between text-[10px]">
+        {isEquipped ? (
+          <span className="text-emerald-300 font-bold flex items-center gap-1">
+            <span>✨</span> Ativa no Pirata
+          </span>
+        ) : activeEquippedFruitName ? (
+          <span className="text-amber-300 font-bold flex items-center gap-1">
+            <span>⚠️</span> Substitui {activeEquippedFruitName}
+          </span>
+        ) : (
+          <span className="text-purple-300 font-bold flex items-center gap-1">
+            <span>⚡</span> Pronta para consumo
+          </span>
+        )}
+
+        <span className="text-amber-400 font-black">
+          +{fruit.sellValueInBerries.toLocaleString()} ฿
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function BackpackTab({
   player,
   onUpdatePlayer,
@@ -237,6 +369,8 @@ export function BackpackTab({
   const [filter, setFilter] = useState<InventoryFilter>('EQUIPMENT');
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
   const [itemToSell, setItemToSell] = useState<InventoryItem | null>(null);
+  const [hoveredSlotItemId, setHoveredSlotItemId] = useState<string | null>(null);
+  const [hoveredInspectFruit, setHoveredInspectFruit] = useState<boolean>(false);
 
   const gearBonuses = calculateGearBonuses(player.equippedGear);
   const equippedGear = player.equippedGear || {
@@ -754,51 +888,142 @@ export function BackpackTab({
           {/* ========================================================= */}
           <div className="grid grid-cols-4 sm:grid-cols-5 gap-2.5 p-3 bg-slate-900/50 rounded-2xl border border-slate-700/60 shadow-inner">
             {/* Itens Preenchidos (Ordenados por Raridade: Maior ➔ Menor) */}
-            {sortedFilteredInventory.map((item) => {
+            {sortedFilteredInventory.map((item, index) => {
               const itemRarity = getItemRarity(item);
               const rarityStyle = getRarityStyle(itemRarity);
               const isSelected = selectedItemId === item.id;
               const itemIconPath = getItemIconPath(item);
+              const fruit =
+                item.type === 'DEVIL_FRUIT'
+                  ? (fruitsData as unknown as DevilFruit[]).find((f) => f.id === item.fruitId)
+                  : null;
+              const isHovered = hoveredSlotItemId === item.id;
+
+              // Posicionamento dinâmico e inteligente do pop-up para evitar corte da tela:
+              // - Fileiras superiores (1ª e 2ª fileiras) abrem para baixo
+              // - Fileiras inferiores (a partir da 3ª fileira) abrem para cima
+              const isTopMobile = index < 8; // Linhas 0 e 1 em telas móveis (4 colunas)
+              const isTopDesktop = index < 10; // Linhas 0 e 1 em desktop (5 colunas)
+
+              let verticalPosClass = '';
+              let verticalArrowClass = '';
+
+              if (isTopMobile && isTopDesktop) {
+                // 1ª e 2ª fileiras em qualquer resolução: abre para baixo
+                verticalPosClass = 'top-[112%]';
+                verticalArrowClass = '-top-2 border-l-2 border-t-2';
+              } else if (!isTopMobile && !isTopDesktop) {
+                // Fileiras inferiores em qualquer resolução: abre para cima
+                verticalPosClass = 'bottom-[112%]';
+                verticalArrowClass = '-bottom-2 border-r-2 border-b-2';
+              } else {
+                // Índices 8 e 9: inferior em mobile (para cima), superior em desktop (para baixo)
+                verticalPosClass = 'bottom-[112%] sm:bottom-auto sm:top-[112%]';
+                verticalArrowClass =
+                  '-bottom-2 border-r-2 border-b-2 sm:-bottom-auto sm:-top-2 sm:border-l-2 sm:border-t-2 sm:border-r-0 sm:border-b-0';
+              }
+
+              const isRightMobile = index % 4 >= 2;
+              const isRightDesktop = index % 5 >= 2;
+
+              let horizontalPosClass = '';
+              let horizontalArrowClass = '';
+
+              if (isRightMobile && isRightDesktop) {
+                horizontalPosClass = 'right-0';
+                horizontalArrowClass = 'right-6';
+              } else if (!isRightMobile && !isRightDesktop) {
+                horizontalPosClass = 'left-0';
+                horizontalArrowClass = 'left-6';
+              } else if (isRightMobile && !isRightDesktop) {
+                horizontalPosClass = 'right-0 sm:right-auto sm:left-0';
+                horizontalArrowClass = 'right-6 sm:right-auto sm:left-6';
+              } else {
+                horizontalPosClass = 'left-0 sm:left-auto sm:right-0';
+                horizontalArrowClass = 'left-6 sm:left-auto sm:right-6';
+              }
+
+              const positionClasses = `${verticalPosClass} ${horizontalPosClass}`;
+              const arrowClasses = `${verticalArrowClass} ${horizontalArrowClass}`;
+              const isUshiFruit =
+                item.type === 'DEVIL_FRUIT' &&
+                (item.fruitId === 'ushi-ushi' || fruit?.id === 'ushi-ushi' || item.name.includes('Ushi'));
+              const isNekoFruit =
+                item.type === 'DEVIL_FRUIT' &&
+                (item.fruitId === 'neko-neko' || fruit?.id === 'neko-neko' || item.name.includes('Neko'));
 
               return (
-                <button
+                <div
                   key={item.id}
-                  type="button"
-                  onClick={() => setSelectedItemId(isSelected ? null : item.id)}
-                  className={`aspect-square relative rounded-xl border-2 flex flex-col items-center justify-center p-1.5 transition duration-150 active:scale-95 cursor-pointer group ${
-                    rarityStyle.bg
-                  } ${rarityStyle.border} ${
-                    isSelected
-                      ? 'ring-2 ring-amber-400 ring-offset-2 ring-offset-slate-950 scale-105 z-10'
-                      : 'hover:brightness-110 hover:border-amber-400/60'
+                  className={`aspect-square relative ${
+                    isHovered ? 'z-50' : isSelected ? 'z-20' : 'z-1'
                   }`}
-                  title={`${item.name} (${rarityStyle.label})`}
+                  onMouseEnter={() => {
+                    if (fruit) setHoveredSlotItemId(item.id);
+                  }}
+                  onMouseLeave={() => {
+                    if (hoveredSlotItemId === item.id) setHoveredSlotItemId(null);
+                  }}
                 >
-                  {/* Marcador de Canto de Raridade */}
-                  <span
-                    className={`absolute top-1.5 right-1.5 w-2 h-2 rounded-full ${rarityStyle.corner}`}
-                  />
-
-                  {/* Sprite Real do Item ou Emoji */}
-                  {itemIconPath ? (
-                    <img
-                      src={itemIconPath}
-                      alt={item.name}
-                      className="w-10 h-10 sm:w-11 sm:h-11 object-contain drop-shadow select-none transform group-hover:scale-110 transition duration-150"
+                  <button
+                    type="button"
+                    onClick={() => setSelectedItemId(isSelected ? null : item.id)}
+                    className={`w-full h-full relative rounded-xl border-2 flex items-center justify-center ${
+                      item.type === 'DEVIL_FRUIT' ? 'p-1 sm:p-1.5 overflow-hidden' : 'p-1.5'
+                    } transition duration-150 active:scale-95 cursor-pointer group ${
+                      rarityStyle.bg
+                    } ${rarityStyle.border} ${
+                      isSelected
+                        ? 'ring-2 ring-amber-400 ring-offset-2 ring-offset-slate-950 scale-105 z-10'
+                        : 'hover:brightness-110 hover:border-amber-400/60'
+                    }`}
+                    title={`${item.name} (${rarityStyle.label})`}
+                  >
+                    {/* Marcador de Canto de Raridade */}
+                    <span
+                      className={`absolute top-1.5 right-1.5 z-10 w-2 h-2 rounded-full ${rarityStyle.corner}`}
                     />
-                  ) : (
-                    <span className="text-3xl select-none transform group-hover:scale-110 transition duration-150">
-                      {item.icon || '📦'}
-                    </span>
-                  )}
 
-                  {/* Indicador de Quantidade (se maior que 1) */}
-                  {item.quantity && item.quantity > 1 && (
-                    <span className="absolute bottom-1 right-1 text-[9px] font-black text-slate-200 bg-slate-950/90 px-1 rounded border border-slate-700/80">
-                      x{item.quantity}
-                    </span>
+                    {/* Sprite Real do Item ou Emoji */}
+                    {itemIconPath ? (
+                      <img
+                        src={itemIconPath}
+                        alt={item.name}
+                        className={`${
+                          isUshiFruit
+                            ? 'w-[90%] h-[90%] object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.65)] group-hover:scale-105'
+                            : isNekoFruit
+                            ? 'w-[86%] h-[86%] object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.65)] group-hover:scale-105'
+                            : item.type === 'DEVIL_FRUIT'
+                            ? 'w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.65)] scale-[1.04] group-hover:scale-110'
+                            : 'w-[82%] h-[82%] object-contain drop-shadow group-hover:scale-105'
+                        } select-none transform transition duration-150`}
+                      />
+                    ) : (
+                      <span className="text-3xl select-none transform group-hover:scale-105 transition duration-150">
+                        {item.icon || '📦'}
+                      </span>
+                    )}
+
+                    {/* Indicador de Quantidade (se maior que 1) */}
+                    {item.quantity && item.quantity > 1 && (
+                      <span className="absolute bottom-1 right-1 text-[9px] font-black text-slate-200 bg-slate-950/90 px-1 rounded border border-slate-700/80">
+                        x{item.quantity}
+                      </span>
+                    )}
+                  </button>
+
+                  {/* Tooltip Flutuante de Akuma no Mi ao passar o mouse */}
+                  {isHovered && fruit && (
+                    <DevilFruitTooltip
+                      fruit={fruit}
+                      positionClasses={positionClasses}
+                      arrowClasses={arrowClasses}
+                      isEquipped={player.equippedFruitId === fruit.id}
+                      activeEquippedFruitName={equippedFruit?.name}
+                    />
                   )}
-                </button>
+                </div>
               );
             })}
 
@@ -823,24 +1048,69 @@ export function BackpackTab({
                 const rarityStyle = getRarityStyle(itemRarity);
                 const slotLabel = getSlotLabel(selectedItem.slot, selectedItem.type);
                 const selectedIconPath = getItemIconPath(selectedItem);
+                const selectedFruit =
+                  selectedItem.type === 'DEVIL_FRUIT'
+                    ? (fruitsData as unknown as DevilFruit[]).find((f) => f.id === selectedItem.fruitId)
+                    : null;
+                const isSelectedUshi =
+                  selectedItem.type === 'DEVIL_FRUIT' &&
+                  (selectedItem.fruitId === 'ushi-ushi' ||
+                    selectedFruit?.id === 'ushi-ushi' ||
+                    selectedItem.name.includes('Ushi'));
+                const isSelectedNeko =
+                  selectedItem.type === 'DEVIL_FRUIT' &&
+                  (selectedItem.fruitId === 'neko-neko' ||
+                    selectedFruit?.id === 'neko-neko' ||
+                    selectedItem.name.includes('Neko'));
 
                 return (
                   <div className="p-4 bg-slate-900/90 rounded-2xl border border-amber-500/40 shadow-lg space-y-3">
                     <div className="flex items-start justify-between">
-                      <div className="flex items-start space-x-3 overflow-hidden">
-                        <span className={`w-14 h-14 p-2 bg-slate-950 rounded-xl border shrink-0 flex items-center justify-center ${rarityStyle.border}`}>
-                          {selectedIconPath ? (
-                            <img
-                              src={selectedIconPath}
-                              alt={selectedItem.name}
-                              className="w-full h-full object-contain drop-shadow select-none"
+                      <div className="flex items-start space-x-3 min-w-0">
+                        <div
+                          className="relative"
+                          onMouseEnter={() => {
+                            if (selectedFruit) setHoveredInspectFruit(true);
+                          }}
+                          onMouseLeave={() => setHoveredInspectFruit(false)}
+                        >
+                          <span
+                            className={`${
+                              selectedFruit ? 'w-16 h-16 p-1 cursor-help' : 'w-14 h-14 p-1.5'
+                            } bg-slate-950 rounded-xl border shrink-0 flex items-center justify-center ${
+                              rarityStyle.border
+                            }`}
+                          >
+                            {selectedIconPath ? (
+                              <img
+                                src={selectedIconPath}
+                                alt={selectedItem.name}
+                                className={`${
+                                  isSelectedUshi
+                                    ? 'w-[90%] h-[90%]'
+                                    : isSelectedNeko
+                                    ? 'w-[86%] h-[86%]'
+                                    : 'w-full h-full'
+                                } object-contain drop-shadow select-none`}
+                              />
+                            ) : (
+                              <span className="text-3xl select-none">
+                                {selectedItem.icon || '📦'}
+                              </span>
+                            )}
+                          </span>
+
+                          {/* Tooltip ao passar o mouse sobre o ícone grande da fruta na inspeção */}
+                          {hoveredInspectFruit && selectedFruit && (
+                            <DevilFruitTooltip
+                              fruit={selectedFruit}
+                              positionClasses="bottom-[115%] left-0"
+                              arrowClasses="-bottom-2 left-6 border-r-2 border-b-2"
+                              isEquipped={player.equippedFruitId === selectedFruit.id}
+                              activeEquippedFruitName={equippedFruit?.name}
                             />
-                          ) : (
-                            <span className="text-3xl select-none">
-                              {selectedItem.icon || '📦'}
-                            </span>
                           )}
-                        </span>
+                        </div>
                         <div className="overflow-hidden">
                           <div className="flex items-center space-x-2">
                             <h4 className="text-sm font-black text-slate-100 truncate">{selectedItem.name}</h4>

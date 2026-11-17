@@ -47,14 +47,12 @@ export function getEffectiveAttributes(
     return multiplier > 1 ? Math.max(val + 1, computed) : computed;
   };
 
-  const intMult = mult.intelligenceMultiplier ?? mult.fruitPowerMultiplier;
-
   return {
     strength: calcStat(strWithGear, mult.strengthMultiplier),
-    intelligence: calcStat(intWithGear, intMult),
+    intelligence: intWithGear, // Frutas do Diabo não concedem buffs ao atributo Inteligência
     agility: calcStat(agiWithGear, mult.agilityMultiplier),
     resistance: calcStat(resWithGear, mult.resistanceMultiplier),
-    fruitPower: calcStat(intWithGear, intMult),
+    fruitPower: intWithGear,
   };
 }
 

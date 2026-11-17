@@ -36,9 +36,9 @@ import {
   Coins,
   ChevronRight,
   CheckCircle2,
+  Check,
   Skull,
   Zap,
-  Award,
   Clock,
   X,
 } from 'lucide-react';
@@ -539,8 +539,8 @@ export default function GamePage() {
       fruitId: fruit.id,
       rarity: fruit.rarity || 'common',
       icon: '🍈',
-      iconPath: fruit.iconPath || fruit.spriteUrl || (fruit.id === 'suke-suke' ? '/icons/akuma_suke.png' : fruit.id === 'bane-bane' ? '/icons/akuma_bane.png' : fruit.id === 'noro-noro' ? '/icons/akuma_noro.png' : undefined),
-      spriteUrl: fruit.spriteUrl || fruit.iconPath || (fruit.id === 'suke-suke' ? '/icons/akuma_suke.png' : fruit.id === 'bane-bane' ? '/icons/akuma_bane.png' : fruit.id === 'noro-noro' ? '/icons/akuma_noro.png' : undefined),
+      iconPath: fruit.iconPath || fruit.spriteUrl || (fruit.id === 'suke-suke' ? '/icons/akuma_suke.png' : fruit.id === 'bane-bane' ? '/icons/akuma_bane.png' : fruit.id === 'noro-noro' ? '/icons/akuma_noro.png' : fruit.id === 'doru-doru' ? '/icons/akuma_doru.png' : fruit.id === 'neko-neko' ? '/icons/akuma_neko.png' : fruit.id === 'ushi-ushi' ? '/icons/akuma_ushi_bisao.png' : fruit.id === 'gomu-gomu' ? '/icons/akuma_gomu.png' : fruit.id === 'moku-moku' ? '/icons/akuma_moku.png' : fruit.id === 'suna-suna' ? '/icons/akuma_suna.png' : fruit.id === 'bari-bari' ? '/icons/akuma_bari.png' : fruit.id === 'mera-mera' ? '/icons/akuma_mera.png' : fruit.id === 'goro-goro' ? '/icons/akuma_goro.png' : fruit.id === 'pika-pika' ? '/icons/akuma_pika.png' : undefined),
+      spriteUrl: fruit.spriteUrl || fruit.iconPath || (fruit.id === 'suke-suke' ? '/icons/akuma_suke.png' : fruit.id === 'bane-bane' ? '/icons/akuma_bane.png' : fruit.id === 'noro-noro' ? '/icons/akuma_noro.png' : fruit.id === 'doru-doru' ? '/icons/akuma_doru.png' : fruit.id === 'neko-neko' ? '/icons/akuma_neko.png' : fruit.id === 'ushi-ushi' ? '/icons/akuma_ushi_bisao.png' : fruit.id === 'gomu-gomu' ? '/icons/akuma_gomu.png' : fruit.id === 'moku-moku' ? '/icons/akuma_moku.png' : fruit.id === 'suna-suna' ? '/icons/akuma_suna.png' : fruit.id === 'bari-bari' ? '/icons/akuma_bari.png' : fruit.id === 'mera-mera' ? '/icons/akuma_mera.png' : fruit.id === 'goro-goro' ? '/icons/akuma_goro.png' : fruit.id === 'pika-pika' ? '/icons/akuma_pika.png' : undefined),
     };
 
     const updated: Player = {
@@ -762,30 +762,8 @@ export default function GamePage() {
                 <WantedPoster player={player} />
               </div>
 
-              {/* Coluna Direita: Atributos de Combate & Painel de Evolução (6 cols) */}
+              {/* Coluna Direita: Atributos de Combate (6 cols) */}
               <div className="lg:col-span-6 xl:col-span-6 space-y-5">
-                
-                {/* Banner de Pontos Livres */}
-                <div className="p-4 bg-gradient-to-r from-slate-900 via-amber-950/40 to-slate-900 rounded-2xl border border-amber-900/50 shadow-lg flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2.5 bg-amber-500/20 text-amber-400 rounded-xl border border-amber-500/30">
-                      <Award className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h4 className="text-base font-extrabold text-amber-200">Painel de Evolução</h4>
-                      <p className="text-xs text-slate-400">Distribua pontos livres ganhos ao subir de nível</p>
-                    </div>
-                  </div>
-                  <div className="text-right bg-slate-950/90 px-4 py-2 rounded-xl border border-slate-800">
-                    <span className="text-[10px] uppercase font-bold text-amber-500 tracking-wider block">
-                      Pontos Livres
-                    </span>
-                    <span className="text-2xl font-black text-amber-300">
-                      {player.availableAttributePoints}
-                    </span>
-                  </div>
-                </div>
-
                 {/* Interface de Atributos de Combate Modernizada com Barras e Ícones Temáticos */}
                 <CharacterStats
                   player={player}
@@ -812,10 +790,10 @@ export default function GamePage() {
                   {equippedFruit ? (
                     <div className="space-y-2.5">
                       <div className="flex items-center space-x-3">
-                        {(equippedFruit.iconPath || equippedFruit.spriteUrl || equippedFruit.id === 'suke-suke' || equippedFruit.id === 'bane-bane' || equippedFruit.id === 'noro-noro') && (
+                        {(equippedFruit.iconPath || equippedFruit.spriteUrl || equippedFruit.id === 'suke-suke' || equippedFruit.id === 'bane-bane' || equippedFruit.id === 'noro-noro' || equippedFruit.id === 'doru-doru' || equippedFruit.id === 'neko-neko' || equippedFruit.id === 'ushi-ushi' || equippedFruit.id === 'gomu-gomu' || equippedFruit.id === 'moku-moku' || equippedFruit.id === 'suna-suna' || equippedFruit.id === 'bari-bari' || equippedFruit.id === 'mera-mera' || equippedFruit.id === 'goro-goro' || equippedFruit.id === 'pika-pika') && (
                           <div className="w-12 h-12 p-1 bg-slate-950/80 rounded-xl border border-purple-500/40 shrink-0 flex items-center justify-center">
                             <img
-                              src={equippedFruit.iconPath || equippedFruit.spriteUrl || (equippedFruit.id === 'bane-bane' ? '/icons/akuma_bane.png' : equippedFruit.id === 'noro-noro' ? '/icons/akuma_noro.png' : '/icons/akuma_suke.png')}
+                              src={equippedFruit.iconPath || equippedFruit.spriteUrl || (equippedFruit.id === 'pika-pika' ? '/icons/akuma_pika.png' : equippedFruit.id === 'goro-goro' ? '/icons/akuma_goro.png' : equippedFruit.id === 'mera-mera' ? '/icons/akuma_mera.png' : equippedFruit.id === 'bari-bari' ? '/icons/akuma_bari.png' : equippedFruit.id === 'suna-suna' ? '/icons/akuma_suna.png' : equippedFruit.id === 'moku-moku' ? '/icons/akuma_moku.png' : equippedFruit.id === 'gomu-gomu' ? '/icons/akuma_gomu.png' : equippedFruit.id === 'ushi-ushi' ? '/icons/akuma_ushi_bisao.png' : equippedFruit.id === 'neko-neko' ? '/icons/akuma_neko.png' : equippedFruit.id === 'doru-doru' ? '/icons/akuma_doru.png' : equippedFruit.id === 'bane-bane' ? '/icons/akuma_bane.png' : equippedFruit.id === 'noro-noro' ? '/icons/akuma_noro.png' : '/icons/akuma_suke.png')}
                               alt={equippedFruit.name}
                               className="w-full h-full object-contain drop-shadow"
                             />
@@ -832,15 +810,7 @@ export default function GamePage() {
                       
                       <div className="pt-1 text-xs text-purple-300">
                         <span className="font-bold text-[11px]">Bônus Passivos Concedidos ao Combatente:</span>
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-1.5 text-[10px]">
-                          {(equippedFruit.statMultipliers.intelligenceMultiplier || equippedFruit.statMultipliers.fruitPowerMultiplier) && ((equippedFruit.statMultipliers.intelligenceMultiplier || equippedFruit.statMultipliers.fruitPowerMultiplier)! > 1) && (
-                            <div className="bg-sky-950/80 p-2 rounded-lg border border-sky-800 text-center">
-                              <span className="text-sky-400 font-bold block">Inteligência</span>
-                              <span className="text-sky-200 font-black text-xs">
-                                +{((((equippedFruit.statMultipliers.intelligenceMultiplier || equippedFruit.statMultipliers.fruitPowerMultiplier)!) - 1) * 100).toFixed(1).replace('.0', '')}%
-                              </span>
-                            </div>
-                          )}
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-1.5 text-[10px]">
                           {equippedFruit.statMultipliers.strengthMultiplier && equippedFruit.statMultipliers.strengthMultiplier > 1 && (
                             <div className="bg-purple-950/80 p-2 rounded-lg border border-purple-800 text-center">
                               <span className="text-amber-400 font-bold block">Força</span>
@@ -1190,187 +1160,218 @@ export default function GamePage() {
           {/* ========================================================= */}
           {/* MODAL DO DILEMA DA AKUMA NO MI (LAYOUT CLEAN DEFINITIVO)  */}
           {/* ========================================================= */}
-          {fruitEvent && (
-            <div className="fixed inset-0 z-[100000] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 select-none">
-              <div className="bg-gradient-to-b from-slate-900 via-slate-900 to-purple-950/95 border-2 border-purple-500 rounded-3xl p-6 sm:p-7 max-w-sm sm:max-w-md w-full shadow-[0_0_60px_rgba(168,85,247,0.4)] animate-fade-in text-center relative overflow-visible">
-                {/* Efeito de Aura Cósmica de Fundo */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-purple-600/20 blur-3xl rounded-full pointer-events-none -z-10" />
+          {fruitEvent && (() => {
+            const isFruitInBackpack = Boolean(
+              fruitEvent.fromInventory ||
+              player?.inventory?.some(
+                (item) => item.type === 'DEVIL_FRUIT' && (item.fruitId === fruitEvent.fruit.id || item.id === fruitEvent.fruit.id)
+              )
+            );
 
-                {/* 1. TOPO: Tags de Raridade e Tesouro */}
-                <div className="flex items-center justify-center gap-2 flex-wrap mb-1">
-                  <span className="text-[10px] font-black text-purple-300 uppercase tracking-widest bg-purple-950/90 px-3 py-1 rounded-full border border-purple-500/50 shadow-sm flex items-center gap-1.5">
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping" />
-                    Tesouro Místico Encontrado!
-                  </span>
-                  <span
-                    className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border shadow-sm ${
-                      fruitEvent.fruit.rarity === 'legendary'
-                        ? 'text-amber-300 bg-amber-950/80 border-amber-500/50'
+            return (
+              <div className="fixed inset-0 z-[100000] bg-black/85 backdrop-blur-md flex items-center justify-center p-4 select-none">
+                <div className="bg-gradient-to-b from-slate-900 via-slate-900 to-purple-950/95 border-2 border-purple-500 rounded-3xl p-6 sm:p-7 max-w-sm sm:max-w-md w-full shadow-[0_0_60px_rgba(168,85,247,0.4)] animate-fade-in text-center relative overflow-visible">
+                  {/* Efeito de Aura Cósmica de Fundo */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-purple-600/20 blur-3xl rounded-full pointer-events-none -z-10" />
+
+                  {/* 1. TOPO: Tags de Raridade e Tesouro */}
+                  <div className="flex items-center justify-center gap-2 flex-wrap mb-1">
+                    <span className="text-[10px] font-black text-purple-300 uppercase tracking-widest bg-purple-950/90 px-3 py-1 rounded-full border border-purple-500/50 shadow-sm flex items-center gap-1.5">
+                      <span className="inline-block w-1.5 h-1.5 rounded-full bg-purple-400 animate-ping" />
+                      Tesouro Místico Encontrado!
+                    </span>
+                    <span
+                      className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border shadow-sm ${
+                        fruitEvent.fruit.rarity === 'legendary'
+                          ? 'text-amber-300 bg-amber-950/80 border-amber-500/50'
+                          : fruitEvent.fruit.rarity === 'epic'
+                          ? 'text-purple-300 bg-purple-950/80 border-purple-500/50'
+                          : fruitEvent.fruit.rarity === 'rare'
+                          ? 'text-cyan-300 bg-cyan-950/80 border-cyan-500/50'
+                          : 'text-emerald-300 bg-emerald-950/80 border-emerald-500/50'
+                      }`}
+                    >
+                      {fruitEvent.fruit.rarity === 'legendary'
+                        ? 'Raridade Lendária'
                         : fruitEvent.fruit.rarity === 'epic'
-                        ? 'text-purple-300 bg-purple-950/80 border-purple-500/50'
+                        ? 'Raridade Épica'
                         : fruitEvent.fruit.rarity === 'rare'
-                        ? 'text-cyan-300 bg-cyan-950/80 border-cyan-500/50'
-                        : 'text-emerald-300 bg-emerald-950/80 border-emerald-500/50'
-                    }`}
+                        ? 'Raridade Rara'
+                        : 'Raridade Comum'}
+                    </span>
+                  </div>
+
+                  {/* 2. SPRITE GRANDE CENTRALIZADA COM MOLDURA DE MIRA / CANTOS BRILHANTES & TOOLTIP */}
+                  <div
+                    className="relative mx-auto my-3 w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center cursor-pointer group"
+                    onMouseEnter={() => setFruitHoverTooltip(true)}
+                    onMouseLeave={() => setFruitHoverTooltip(false)}
                   >
-                    {fruitEvent.fruit.rarity === 'legendary'
-                      ? 'Raridade Lendária'
-                      : fruitEvent.fruit.rarity === 'epic'
-                      ? 'Raridade Épica'
-                      : fruitEvent.fruit.rarity === 'rare'
-                      ? 'Raridade Rara'
-                      : 'Raridade Comum'}
-                  </span>
-                </div>
+                    {/* Halo de Luz Neon Pulsante */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/40 via-fuchsia-500/30 to-indigo-500/40 rounded-3xl blur-xl animate-pulse pointer-events-none" />
 
-                {/* 2. SPRITE GRANDE CENTRALIZADA COM MOLDURA DE MIRA / CANTOS BRILHANTES & TOOLTIP */}
-                <div
-                  className="relative mx-auto my-3 w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center cursor-pointer group"
-                  onMouseEnter={() => setFruitHoverTooltip(true)}
-                  onMouseLeave={() => setFruitHoverTooltip(false)}
-                >
-                  {/* Halo de Luz Neon Pulsante */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-purple-600/40 via-fuchsia-500/30 to-indigo-500/40 rounded-3xl blur-xl animate-pulse pointer-events-none" />
+                    {/* Moldura de Mira / Pedestal Tecnológico */}
+                    <div className="relative w-full h-full p-2.5 bg-slate-950/90 rounded-3xl border-2 border-purple-400/90 shadow-[0_0_35px_rgba(168,85,247,0.45)] flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:border-purple-300 group-hover:shadow-[0_0_45px_rgba(168,85,247,0.65)]">
+                      {/* Cantoneiras estilizadas de HUD / Mira com brilho */}
+                      <div className="absolute top-1.5 left-1.5 w-3 h-3 border-t-2 border-l-2 border-purple-400 group-hover:border-purple-200 transition-colors shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
+                      <div className="absolute top-1.5 right-1.5 w-3 h-3 border-t-2 border-r-2 border-purple-400 group-hover:border-purple-200 transition-colors shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
+                      <div className="absolute bottom-1.5 left-1.5 w-3 h-3 border-b-2 border-l-2 border-purple-400 group-hover:border-purple-200 transition-colors shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
+                      <div className="absolute bottom-1.5 right-1.5 w-3 h-3 border-b-2 border-r-2 border-purple-400 group-hover:border-purple-200 transition-colors shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
 
-                  {/* Moldura de Mira / Pedestal Tecnológico */}
-                  <div className="relative w-full h-full p-2.5 bg-slate-950/90 rounded-3xl border-2 border-purple-400/90 shadow-[0_0_35px_rgba(168,85,247,0.45)] flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:border-purple-300 group-hover:shadow-[0_0_45px_rgba(168,85,247,0.65)]">
-                    {/* Cantoneiras estilizadas de HUD / Mira com brilho */}
-                    <div className="absolute top-1.5 left-1.5 w-3 h-3 border-t-2 border-l-2 border-purple-400 group-hover:border-purple-200 transition-colors shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
-                    <div className="absolute top-1.5 right-1.5 w-3 h-3 border-t-2 border-r-2 border-purple-400 group-hover:border-purple-200 transition-colors shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
-                    <div className="absolute bottom-1.5 left-1.5 w-3 h-3 border-b-2 border-l-2 border-purple-400 group-hover:border-purple-200 transition-colors shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
-                    <div className="absolute bottom-1.5 right-1.5 w-3 h-3 border-b-2 border-r-2 border-purple-400 group-hover:border-purple-200 transition-colors shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
+                      {/* Indicador de Inventário (Já Possuída na Mochila) */}
+                      {isFruitInBackpack && (
+                        <div
+                          className="absolute top-2 right-2 z-20 w-5 h-5 rounded-full bg-emerald-950/95 border border-emerald-400/90 flex items-center justify-center shadow-[0_0_8px_rgba(16,185,129,0.8)] text-emerald-300"
+                          title="Você já possui esta Akuma no Mi guardada na mochila"
+                        >
+                          <Check className="w-3 h-3 text-emerald-400 stroke-[3]" />
+                        </div>
+                      )}
 
-                    {fruitEvent.fruit.iconPath || fruitEvent.fruit.spriteUrl || fruitEvent.fruit.id === 'suke-suke' || fruitEvent.fruit.id === 'bane-bane' || fruitEvent.fruit.id === 'noro-noro' ? (
-                      <img
-                        src={
-                          fruitEvent.fruit.iconPath ||
-                          fruitEvent.fruit.spriteUrl ||
-                          (fruitEvent.fruit.id === 'bane-bane'
-                            ? '/icons/akuma_bane.png'
-                            : fruitEvent.fruit.id === 'noro-noro'
-                            ? '/icons/akuma_noro.png'
-                            : '/icons/akuma_suke.png')
-                        }
-                        alt={fruitEvent.fruit.name}
-                        className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.7)] transform transition-transform duration-300 group-hover:scale-110"
-                      />
-                    ) : (
-                      <span className="text-6xl filter drop-shadow group-hover:scale-110 transition-transform duration-300">🍈</span>
+                      {fruitEvent.fruit.iconPath || fruitEvent.fruit.spriteUrl || fruitEvent.fruit.id === 'suke-suke' || fruitEvent.fruit.id === 'bane-bane' || fruitEvent.fruit.id === 'noro-noro' || fruitEvent.fruit.id === 'doru-doru' || fruitEvent.fruit.id === 'neko-neko' || fruitEvent.fruit.id === 'ushi-ushi' || fruitEvent.fruit.id === 'gomu-gomu' || fruitEvent.fruit.id === 'moku-moku' || fruitEvent.fruit.id === 'suna-suna' || fruitEvent.fruit.id === 'bari-bari' || fruitEvent.fruit.id === 'mera-mera' || fruitEvent.fruit.id === 'goro-goro' || fruitEvent.fruit.id === 'pika-pika' ? (
+                        <img
+                          src={
+                            fruitEvent.fruit.iconPath ||
+                            fruitEvent.fruit.spriteUrl ||
+                            (fruitEvent.fruit.id === 'pika-pika'
+                              ? '/icons/akuma_pika.png'
+                              : fruitEvent.fruit.id === 'goro-goro'
+                              ? '/icons/akuma_goro.png'
+                              : fruitEvent.fruit.id === 'mera-mera'
+                              ? '/icons/akuma_mera.png'
+                              : fruitEvent.fruit.id === 'bari-bari'
+                              ? '/icons/akuma_bari.png'
+                              : fruitEvent.fruit.id === 'suna-suna'
+                              ? '/icons/akuma_suna.png'
+                              : fruitEvent.fruit.id === 'moku-moku'
+                              ? '/icons/akuma_moku.png'
+                              : fruitEvent.fruit.id === 'gomu-gomu'
+                              ? '/icons/akuma_gomu.png'
+                              : fruitEvent.fruit.id === 'ushi-ushi'
+                              ? '/icons/akuma_ushi_bisao.png'
+                              : fruitEvent.fruit.id === 'neko-neko'
+                              ? '/icons/akuma_neko.png'
+                              : fruitEvent.fruit.id === 'doru-doru'
+                              ? '/icons/akuma_doru.png'
+                              : fruitEvent.fruit.id === 'bane-bane'
+                              ? '/icons/akuma_bane.png'
+                              : fruitEvent.fruit.id === 'noro-noro'
+                              ? '/icons/akuma_noro.png'
+                              : '/icons/akuma_suke.png')
+                          }
+                          alt={fruitEvent.fruit.name}
+                          className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.7)] transform transition-transform duration-300 group-hover:scale-110"
+                        />
+                      ) : (
+                        <span className="text-6xl filter drop-shadow group-hover:scale-110 transition-transform duration-300">🍈</span>
+                      )}
+                    </div>
+
+                    {/* Tooltip Flutuante Elegante ao passar o mouse */}
+                    {fruitHoverTooltip && (
+                      <div className="absolute z-50 top-[105%] left-1/2 -translate-x-1/2 w-72 sm:w-80 p-3.5 bg-slate-950/95 border-2 border-purple-500/90 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.95),0_0_30px_rgba(168,85,247,0.4)] backdrop-blur-xl text-left pointer-events-none animate-fade-in space-y-2">
+                        {/* Seta indicadora apontando para a fruta */}
+                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-slate-950 border-l-2 border-t-2 border-purple-500/90 transform rotate-45" />
+
+                        {/* Cabeçalho do Tooltip */}
+                        <div className="flex items-center justify-between border-b border-purple-900/60 pb-1.5">
+                          <span className="text-[11px] font-black uppercase tracking-wider text-purple-300 flex items-center gap-1.5">
+                            <span>✨</span> Detalhes & Passivas
+                          </span>
+                          <span className="text-[10px] text-purple-400 font-bold px-2 py-0.5 rounded bg-purple-950/80 border border-purple-800">
+                            {fruitEvent.fruit.category}
+                          </span>
+                        </div>
+
+                        {/* Descrição Narrativa */}
+                        <p className="text-xs text-slate-200 leading-relaxed">
+                          {fruitEvent.fruit.description}
+                        </p>
+
+                        {/* Bônus Passivos no Tooltip */}
+                        <div className="pt-1 border-t border-purple-900/60 space-y-1">
+                          <span className="text-[10px] font-bold text-purple-300/80 uppercase tracking-wider block">
+                            Bônus Passivos Concedidos:
+                          </span>
+                          <div className="grid grid-cols-2 gap-1.5 text-[11px]">
+                            {fruitEvent.fruit.statMultipliers.strengthMultiplier && fruitEvent.fruit.statMultipliers.strengthMultiplier > 1 && (
+                              <div className="text-amber-300 bg-amber-950/40 px-2 py-1 rounded-lg border border-amber-500/30 flex items-center justify-between">
+                                <span>Força:</span>
+                                <strong className="text-amber-200 font-bold">
+                                  +{((fruitEvent.fruit.statMultipliers.strengthMultiplier - 1) * 100).toFixed(1).replace('.0', '')}%
+                                </strong>
+                              </div>
+                            )}
+                            {fruitEvent.fruit.statMultipliers.agilityMultiplier && fruitEvent.fruit.statMultipliers.agilityMultiplier > 1 && (
+                              <div className="text-cyan-300 bg-cyan-950/40 px-2 py-1 rounded-lg border border-cyan-500/30 flex items-center justify-between">
+                                <span>Agilidade:</span>
+                                <strong className="text-cyan-200 font-bold">
+                                  +{((fruitEvent.fruit.statMultipliers.agilityMultiplier - 1) * 100).toFixed(1).replace('.0', '')}%
+                                </strong>
+                              </div>
+                            )}
+                            {fruitEvent.fruit.statMultipliers.resistanceMultiplier && fruitEvent.fruit.statMultipliers.resistanceMultiplier > 1 && (
+                              <div className="text-rose-300 bg-rose-950/40 px-2 py-1 rounded-lg border border-rose-500/30 flex items-center justify-between">
+                                <span>Resistência:</span>
+                                <strong className="text-rose-200 font-bold">
+                                  +{((fruitEvent.fruit.statMultipliers.resistanceMultiplier - 1) * 100).toFixed(1).replace('.0', '')}%
+                                </strong>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Aviso de Substituição no Tooltip */}
+                        {player?.equippedFruitId && (
+                          <div className="pt-1 border-t border-purple-900/60 text-[10px] text-amber-300/90 leading-tight flex items-start gap-1">
+                            <span className="shrink-0">⚠️</span>
+                            <span>Substitui a fruta ativa ({equippedFruit?.name}).</span>
+                          </div>
+                        )}
+                      </div>
                     )}
                   </div>
 
-                  {/* Tooltip Flutuante Elegante ao passar o mouse */}
-                  {fruitHoverTooltip && (
-                    <div className="absolute z-50 top-[105%] left-1/2 -translate-x-1/2 w-72 sm:w-80 p-3.5 bg-slate-950/95 border-2 border-purple-500/90 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.95),0_0_30px_rgba(168,85,247,0.4)] backdrop-blur-xl text-left pointer-events-none animate-fade-in space-y-2">
-                      {/* Seta indicadora apontando para a fruta */}
-                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-slate-950 border-l-2 border-t-2 border-purple-500/90 transform rotate-45" />
+                  {/* 3. NOME DA FRUTA EM DESTAQUE E SUBTÍTULO */}
+                  <div className="space-y-0.5 pt-1">
+                    <h3 className="text-2xl sm:text-3xl font-black text-purple-100 tracking-wide drop-shadow-md">
+                      {fruitEvent.fruit.name}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-purple-300/90 italic font-medium">
+                      {fruitEvent.fruit.englishMeaning} • {fruitEvent.fruit.category}
+                    </p>
+                  </div>
 
-                      {/* Cabeçalho do Tooltip */}
-                      <div className="flex items-center justify-between border-b border-purple-900/60 pb-1.5">
-                        <span className="text-[11px] font-black uppercase tracking-wider text-purple-300 flex items-center gap-1.5">
-                          <span>✨</span> Detalhes & Passivas
-                        </span>
-                        <span className="text-[10px] text-purple-400 font-bold px-2 py-0.5 rounded bg-purple-950/80 border border-purple-800">
-                          {fruitEvent.fruit.category}
-                        </span>
-                      </div>
+                  {/* 4. TRÊS BOTÕES DE AÇÃO PRINCIPAIS (DESIGN MINIMALISTA REFINADO) */}
+                  <div className="pt-2 space-y-2">
+                    {/* Botão Principal: Consumir / Comer (Roxo/Neon Fluido Refinado) */}
+                    <button
+                      onClick={() => handleEatFruit(fruitEvent.fruit, fruitEvent.fromInventory)}
+                      className="w-full py-3 px-4 bg-gradient-to-r from-purple-600/90 via-purple-500 to-indigo-600/90 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase rounded-xl border border-purple-400/50 shadow-[0_0_20px_rgba(168,85,247,0.3)] transition-all duration-200 hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] cursor-pointer"
+                    >
+                      {player?.equippedFruitId ? 'CONSUMIR E SUBSTITUIR' : 'COMER A FRUTA'}
+                    </button>
 
-                      {/* Descrição Narrativa */}
-                      <p className="text-xs text-slate-200 leading-relaxed">
-                        {fruitEvent.fruit.description}
-                      </p>
+                    {/* Botão Secundário: Vender (Dourado/Âmbar Fosco Elegante) */}
+                    <button
+                      onClick={() => handleSellFruit(fruitEvent.fruit, fruitEvent.fromInventory)}
+                      className="w-full py-2.5 sm:py-3 px-4 bg-amber-950/40 hover:bg-amber-900/60 text-amber-300 hover:text-amber-200 font-bold text-xs sm:text-sm tracking-wider uppercase rounded-xl border border-amber-500/40 hover:border-amber-400/70 shadow-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] cursor-pointer"
+                    >
+                      VENDER NO MERCADO NEGRO (+{fruitEvent.fruit.sellValueInBerries.toLocaleString()} ฿)
+                    </button>
 
-                      {/* Bônus Passivos no Tooltip */}
-                      <div className="pt-1 border-t border-purple-900/60 space-y-1">
-                        <span className="text-[10px] font-bold text-purple-300/80 uppercase tracking-wider block">
-                          Bônus Passivos Concedidos:
-                        </span>
-                        <div className="grid grid-cols-2 gap-1.5 text-[11px]">
-                          {fruitEvent.fruit.statMultipliers.strengthMultiplier && fruitEvent.fruit.statMultipliers.strengthMultiplier > 1 && (
-                            <div className="text-amber-300 bg-amber-950/40 px-2 py-1 rounded-lg border border-amber-500/30 flex items-center justify-between">
-                              <span>Força:</span>
-                              <strong className="text-amber-200 font-bold">
-                                +{((fruitEvent.fruit.statMultipliers.strengthMultiplier - 1) * 100).toFixed(1).replace('.0', '')}%
-                              </strong>
-                            </div>
-                          )}
-                          {fruitEvent.fruit.statMultipliers.agilityMultiplier && fruitEvent.fruit.statMultipliers.agilityMultiplier > 1 && (
-                            <div className="text-cyan-300 bg-cyan-950/40 px-2 py-1 rounded-lg border border-cyan-500/30 flex items-center justify-between">
-                              <span>Agilidade:</span>
-                              <strong className="text-cyan-200 font-bold">
-                                +{((fruitEvent.fruit.statMultipliers.agilityMultiplier - 1) * 100).toFixed(1).replace('.0', '')}%
-                              </strong>
-                            </div>
-                          )}
-                          {fruitEvent.fruit.statMultipliers.resistanceMultiplier && fruitEvent.fruit.statMultipliers.resistanceMultiplier > 1 && (
-                            <div className="text-rose-300 bg-rose-950/40 px-2 py-1 rounded-lg border border-rose-500/30 flex items-center justify-between">
-                              <span>Resistência:</span>
-                              <strong className="text-rose-200 font-bold">
-                                +{((fruitEvent.fruit.statMultipliers.resistanceMultiplier - 1) * 100).toFixed(1).replace('.0', '')}%
-                              </strong>
-                            </div>
-                          )}
-                          {(fruitEvent.fruit.statMultipliers.intelligenceMultiplier || fruitEvent.fruit.statMultipliers.fruitPowerMultiplier) && ((fruitEvent.fruit.statMultipliers.intelligenceMultiplier || fruitEvent.fruit.statMultipliers.fruitPowerMultiplier)! > 1) && (
-                            <div className="text-sky-300 bg-sky-950/40 px-2 py-1 rounded-lg border border-sky-500/30 flex items-center justify-between">
-                              <span>Inteligência:</span>
-                              <strong className="text-sky-200 font-bold">
-                                +{((((fruitEvent.fruit.statMultipliers.intelligenceMultiplier || fruitEvent.fruit.statMultipliers.fruitPowerMultiplier)!) - 1) * 100).toFixed(1).replace('.0', '')}%
-                              </strong>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Aviso de Substituição no Tooltip */}
-                      {player?.equippedFruitId && (
-                        <div className="pt-1 border-t border-purple-900/60 text-[10px] text-amber-300/90 leading-tight flex items-start gap-1">
-                          <span className="shrink-0">⚠️</span>
-                          <span>Substitui a fruta ativa ({equippedFruit?.name}).</span>
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </div>
-
-                {/* 3. NOME DA FRUTA EM DESTAQUE E SUBTÍTULO */}
-                <div className="space-y-0.5 pt-1">
-                  <h3 className="text-2xl sm:text-3xl font-black text-purple-100 tracking-wide drop-shadow-md">
-                    {fruitEvent.fruit.name}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-purple-300/90 italic font-medium">
-                    {fruitEvent.fruit.englishMeaning} • {fruitEvent.fruit.category}
-                  </p>
-                </div>
-
-                {/* 4. TRÊS BOTÕES DE AÇÃO PRINCIPAIS (DESIGN MINIMALISTA REFINADO) */}
-                <div className="pt-2 space-y-2">
-                  {/* Botão Principal: Consumir / Comer (Roxo/Neon Fluido Refinado) */}
-                  <button
-                    onClick={() => handleEatFruit(fruitEvent.fruit, fruitEvent.fromInventory)}
-                    className="w-full py-3 px-4 bg-gradient-to-r from-purple-600/90 via-purple-500 to-indigo-600/90 hover:from-purple-500 hover:to-indigo-500 text-white font-extrabold text-xs sm:text-sm tracking-wider uppercase rounded-xl border border-purple-400/50 shadow-[0_0_20px_rgba(168,85,247,0.3)] transition-all duration-200 hover:shadow-[0_0_25px_rgba(168,85,247,0.5)] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] cursor-pointer"
-                  >
-                    {player?.equippedFruitId ? 'CONSUMIR E SUBSTITUIR' : 'COMER A FRUTA'}
-                  </button>
-
-                  {/* Botão Secundário: Vender (Dourado/Âmbar Fosco Elegante) */}
-                  <button
-                    onClick={() => handleSellFruit(fruitEvent.fruit, fruitEvent.fromInventory)}
-                    className="w-full py-2.5 sm:py-3 px-4 bg-amber-950/40 hover:bg-amber-900/60 text-amber-300 hover:text-amber-200 font-bold text-xs sm:text-sm tracking-wider uppercase rounded-xl border border-amber-500/40 hover:border-amber-400/70 shadow-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] cursor-pointer"
-                  >
-                    VENDER NO MERCADO NEGRO (+{fruitEvent.fruit.sellValueInBerries.toLocaleString()} ฿)
-                  </button>
-
-                  {/* Botão Terciário: Guardar na Mochila (Escuro Translúcido com Borda Suave) */}
-                  <button
-                    onClick={() => handleStoreFruitInBackpack(fruitEvent.fruit, fruitEvent.fromInventory)}
-                    className="w-full py-2.5 sm:py-3 px-4 bg-slate-950/60 hover:bg-slate-800/80 text-slate-300 hover:text-slate-100 font-semibold text-xs sm:text-sm tracking-wide rounded-xl border border-slate-700/60 hover:border-slate-500/80 shadow-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] cursor-pointer"
-                  >
-                    Guardar na Mochila
-                  </button>
+                    {/* Botão Terciário: Guardar na Mochila (Escuro Translúcido com Borda Suave) */}
+                    <button
+                      onClick={() => handleStoreFruitInBackpack(fruitEvent.fruit, fruitEvent.fromInventory)}
+                      className="w-full py-2.5 sm:py-3 px-4 bg-slate-950/60 hover:bg-slate-800/80 text-slate-300 hover:text-slate-100 font-semibold text-xs sm:text-sm tracking-wide rounded-xl border border-slate-700/60 hover:border-slate-500/80 shadow-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] cursor-pointer"
+                    >
+                      Guardar na Mochila
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
 
         </main>
       </div>

@@ -74,9 +74,7 @@
     "iconPath": "/icons/akuma_noro.png",
     "spriteUrl": "/icons/akuma_noro.png",
     "statMultipliers": {
-      "agilityMultiplier": 1.05,
-      "intelligenceMultiplier": 1.05,
-      "fruitPowerMultiplier": 1.05
+      "agilityMultiplier": 1.05
     },
     "skills": [
       {
@@ -104,6 +102,8 @@
     "rarity": "rare",
     "description": "Permite ao usuário produzir e moldar cera líquida que se solidifica em uma blindagem tão resistente quanto aço. Passiva estrita: +10% de Resistência.",
     "sellValueInBerries": 210000,
+    "iconPath": "/icons/akuma_doru.png",
+    "spriteUrl": "/icons/akuma_doru.png",
     "statMultipliers": {
       "resistanceMultiplier": 1.10
     },
@@ -133,11 +133,11 @@
     "rarity": "rare",
     "description": "Transforma o usuário em um híbrido de leopardo carnívoro voraz, conferindo reflexos predatórios felinos e garras mortais.",
     "sellValueInBerries": 220000,
+    "iconPath": "/icons/akuma_neko.png",
+    "spriteUrl": "/icons/akuma_neko.png",
     "statMultipliers": {
       "agilityMultiplier": 1.05,
-      "strengthMultiplier": 1.05,
-      "intelligenceMultiplier": 1.10,
-      "fruitPowerMultiplier": 1.10
+      "strengthMultiplier": 1.05
     },
     "skills": [
       {
@@ -165,11 +165,11 @@
     "rarity": "rare",
     "description": "Concede a robustez e o vigor inabalável de um bisão gigante, aumentando a musculatura e a couraça natural.",
     "sellValueInBerries": 225000,
+    "iconPath": "/icons/akuma_ushi_bisao.png",
+    "spriteUrl": "/icons/akuma_ushi_bisao.png",
     "statMultipliers": {
       "strengthMultiplier": 1.05,
-      "resistanceMultiplier": 1.05,
-      "intelligenceMultiplier": 1.10,
-      "fruitPowerMultiplier": 1.10
+      "resistanceMultiplier": 1.05
     },
     "skills": [
       {
@@ -197,12 +197,12 @@
     "rarity": "epic",
     "description": "Concede corpo com propriedades de borracha, conferindo elasticidade infinita, imunidade a contusões e equilíbrio absoluto de combate.",
     "sellValueInBerries": 380000,
+    "iconPath": "/icons/akuma_gomu.png",
+    "spriteUrl": "/icons/akuma_gomu.png",
     "statMultipliers": {
       "strengthMultiplier": 1.05,
       "agilityMultiplier": 1.05,
-      "resistanceMultiplier": 1.05,
-      "intelligenceMultiplier": 1.15,
-      "fruitPowerMultiplier": 1.15
+      "resistanceMultiplier": 1.05
     },
     "skills": [
       {
@@ -230,10 +230,10 @@
     "rarity": "epic",
     "description": "Permite ao usuário criar, controlar e transformar o próprio corpo em fumaça densa e intangível, tornando-o evasivo e veloz.",
     "sellValueInBerries": 400000,
+    "iconPath": "/icons/akuma_moku.png",
+    "spriteUrl": "/icons/akuma_moku.png",
     "statMultipliers": {
-      "agilityMultiplier": 1.15,
-      "intelligenceMultiplier": 1.15,
-      "fruitPowerMultiplier": 1.15
+      "agilityMultiplier": 1.15
     },
     "skills": [
       {
@@ -261,10 +261,10 @@
     "rarity": "epic",
     "description": "Permite controlar e se transformar em areia árida do deserto, desferindo golpes cortantes e tempestades de areia devastadoras.",
     "sellValueInBerries": 410000,
+    "iconPath": "/icons/akuma_suna.png",
+    "spriteUrl": "/icons/akuma_suna.png",
     "statMultipliers": {
-      "strengthMultiplier": 1.15,
-      "intelligenceMultiplier": 1.15,
-      "fruitPowerMultiplier": 1.15
+      "strengthMultiplier": 1.15
     },
     "skills": [
       {
@@ -292,10 +292,10 @@
     "rarity": "epic",
     "description": "Concede o poder de erguer barreiras invisíveis ou translúcidas absolutamente indestrutíveis para bloquear qualquer impacto.",
     "sellValueInBerries": 420000,
+    "iconPath": "/icons/akuma_bari.png",
+    "spriteUrl": "/icons/akuma_bari.png",
     "statMultipliers": {
-      "resistanceMultiplier": 1.15,
-      "intelligenceMultiplier": 1.15,
-      "fruitPowerMultiplier": 1.15
+      "resistanceMultiplier": 1.15
     },
     "skills": [
       {
@@ -323,12 +323,12 @@
     "rarity": "legendary",
     "description": "Permite criar, controlar e se transformar em fogo elemental vivo de altíssima temperatura, incinerando qualquer ameaça.",
     "sellValueInBerries": 650000,
+    "iconPath": "/icons/akuma_mera.png",
+    "spriteUrl": "/icons/akuma_mera.png",
     "statMultipliers": {
       "strengthMultiplier": 1.10,
       "agilityMultiplier": 1.05,
-      "resistanceMultiplier": 1.05,
-      "intelligenceMultiplier": 1.25,
-      "fruitPowerMultiplier": 1.25
+      "resistanceMultiplier": 1.05
     },
     "skills": [
       {
@@ -356,12 +356,12 @@
     "rarity": "legendary",
     "description": "Permite criar, controlar e se transformar em eletricidade pura até 200 milhões de volts, movendo-se na velocidade do relâmpago.",
     "sellValueInBerries": 750000,
+    "iconPath": "/icons/akuma_goro.png",
+    "spriteUrl": "/icons/akuma_goro.png",
     "statMultipliers": {
       "strengthMultiplier": 1.075,
       "agilityMultiplier": 1.075,
-      "resistanceMultiplier": 1.05,
-      "intelligenceMultiplier": 1.25,
-      "fruitPowerMultiplier": 1.25
+      "resistanceMultiplier": 1.05
     },
     "skills": [
       {
@@ -389,12 +389,12 @@
     "rarity": "legendary",
     "description": "Concede o poder de se transformar e se mover na velocidade da luz, desferindo chutes reflexivos e feixes laser perfurantes.",
     "sellValueInBerries": 800000,
+    "iconPath": "/icons/akuma_pika.png",
+    "spriteUrl": "/icons/akuma_pika.png",
     "statMultipliers": {
       "strengthMultiplier": 1.05,
       "agilityMultiplier": 1.10,
-      "resistanceMultiplier": 1.05,
-      "intelligenceMultiplier": 1.25,
-      "fruitPowerMultiplier": 1.25
+      "resistanceMultiplier": 1.05
     },
     "skills": [
       {

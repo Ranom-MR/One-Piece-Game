@@ -89,9 +89,7 @@ export function CharacterStats({
       textColor: 'text-indigo-400',
       badgeBg: 'bg-indigo-950/80 text-indigo-300 border-indigo-500/40',
       btnBg: 'bg-indigo-500 hover:bg-indigo-400 text-white',
-      fruitMultiplier:
-        equippedFruit?.statMultipliers.intelligenceMultiplier ||
-        equippedFruit?.statMultipliers.fruitPowerMultiplier,
+      fruitMultiplier: undefined, // Frutas do Diabo não concedem buffs para Inteligência
     },
     {
       key: 'resistance',
