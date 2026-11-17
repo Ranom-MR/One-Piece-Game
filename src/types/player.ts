@@ -60,7 +60,7 @@ export interface ActiveTraining {
   attribute: keyof PlayerAttributes;
   attributeName: string;
   startedAt: number;        // Timestamp Date.now() em ms
-  durationSeconds: number;  // Duração total em segundos (ex: 1800 para 30 minutos)
+  durationSeconds: number;  // Duração total em segundos (ex: 1799 para 29m59s)
   endsAt: number;           // Timestamp Date.now() + durationSeconds * 1000
 }
 
@@ -70,7 +70,7 @@ export interface ActiveQuest {
   islandId: string;
   islandName: string;
   startedAt: number;        // Timestamp Date.now() em ms
-  durationSeconds: number;  // Duração total em segundos (ex: 3600 para 1 hora)
+  durationSeconds: number;  // Duração total em segundos (ex: 3599 para 59m59s)
   endsAt: number;           // Timestamp Date.now() + durationSeconds * 1000
   rewards: {
     berriesMin: number;

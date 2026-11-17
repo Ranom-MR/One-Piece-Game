@@ -18,7 +18,7 @@
         "name": "Ajudar Makino na Taverna",
         "description": "Limpar balcões e descarregar barris de suco e rum para obter os primeiros Berries e ouvir histórias de marinheiros.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 1,
         "rewards": {
           "berriesMin": 40,
@@ -31,7 +31,7 @@
         "name": "Ronda pelos Moinhos de Vento",
         "description": "Caminhar pelas colinas ventosas da vila garantindo que nenhum batedor suspeito se aproxime dos armazéns.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 1,
         "rewards": {
           "berriesMin": 50,
@@ -44,7 +44,7 @@
         "name": "Caçar Javalis nas Colinas",
         "description": "Feras selvagens estão invadindo as hortas dos camponeses. Derrote-as para garantir carne e segurança.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 2,
         "rewards": {
           "berriesMin": 70,
@@ -57,7 +57,7 @@
         "name": "Vigiar o Cais dos Pescadores",
         "description": "Pequenos ladrões da costa estão sabotando os barcos de pesca. Monte guarda noturna na baía.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 2,
         "rewards": {
           "berriesMin": 85,
@@ -85,7 +85,7 @@
         "name": "Escolta da Caravana da Vila",
         "description": "Acompanhe o transporte de provisões médicas e alimentos das colinas até o centro do vilarejo.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 3,
         "rewards": {
           "berriesMin": 105,
@@ -98,7 +98,7 @@
         "name": "Investigar a Enseada Misteriosa",
         "description": "Luzes estranhas e baús encalhados foram avistados entre os recifes. Há rumores de um tesouro místico!",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 4,
         "rewards": {
           "berriesMin": 140,
@@ -111,7 +111,7 @@
         "name": "Resistir ao Cerco dos Criminosos",
         "description": "Os bandidos da montanha cercaram a praça central exigindo tributos. Lute ombro a ombro com os moradores.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 4,
         "rewards": {
           "berriesMin": 160,
@@ -124,7 +124,7 @@
         "name": "Incursão ao Esconderijo da Montanha",
         "description": "Suba as trilhas rochosas e invada o covil principal dos criminosos para resgatar os reféns e recuperar bens roubados.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 5,
         "rewards": {
           "berriesMin": 190,
@@ -186,7 +186,7 @@
         "name": "Desembarque no Cais Sul",
         "description": "Atracar furtivamente nos cais do sul (South Docks) de Orange Town e neutralizar as sentinelas circenses.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 6,
         "rewards": {
           "berriesMin": 180,
@@ -199,7 +199,7 @@
         "name": "Ronda pelas Barracas e Mercados",
         "description": "Inspecionar os armazéns e barracas abandonadas, recuperando provisões pilhadas pelo bando dos palhaços.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 6,
         "rewards": {
           "berriesMin": 220,
@@ -212,7 +212,7 @@
         "name": "Investida pela Main Street",
         "description": "Avançar pela avenida principal da cidade desarmando armadilhas de pólvora e ajudando cidadãos encurralados.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 7,
         "rewards": {
           "berriesMin": 260,
@@ -225,7 +225,7 @@
         "name": "Praça Destroçada da Cidade",
         "description": "Localizar e desarmar as Bombas Buggy armadas nas praças antes que detonem os prédios históricos da cidade.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 7,
         "rewards": {
           "berriesMin": 300,
@@ -253,7 +253,7 @@
         "name": "Chafariz e Praça Central",
         "description": "Reconquistar a praça do chafariz central e desobstruir os canais de água para conter incêndios na cidade.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 8,
         "rewards": {
           "berriesMin": 350,
@@ -266,7 +266,7 @@
         "name": "Defender a Pet Shop de Chouchou",
         "description": "O valente cãozinho Chouchou defende ferozmente a loja de seu falecido dono. Lute ao seu lado contra os saqueadores!",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 9,
         "rewards": {
           "berriesMin": 400,
@@ -279,7 +279,7 @@
         "name": "Resgatar o Prefeito Boodle",
         "description": "O bravo prefeito marchou sozinho até a colina para desafiar o tirano. Suba até a mansão e impeça que ele seja ferido!",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 9,
         "rewards": {
           "berriesMin": 450,
@@ -356,7 +356,7 @@
         "name": "Vigilância na Encosta dos Penhascos",
         "description": "Rastrear pegadas na ladeira íngreme que leva à praia deserta.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 11,
         "rewards": {
           "berriesMin": 120,
@@ -369,7 +369,7 @@
         "name": "Proteger os Jardins da Mansão",
         "description": "Espantar capangas infiltrados disfarçados de jardineiros e entregadores.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 11,
         "rewards": {
           "berriesMin": 140,
@@ -382,7 +382,7 @@
         "name": "Emboscada no Declive Norte",
         "description": "Derrubar árvores e espalhar óleo na rampa para conter a subida dos invasores.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 12,
         "rewards": {
           "berriesMin": 165,
@@ -395,7 +395,7 @@
         "name": "Neutralizar os Piratas do Gato Preto",
         "description": "Combater os marujos selvagens armados com adagas e garras de escalada.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 12,
         "rewards": {
           "berriesMin": 185,
@@ -423,7 +423,7 @@
         "name": "Proteger a Fuga de Kaya",
         "description": "Criar uma rota de fuga segura através dos bosques de pinheiros para a herdeira da mansão.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 13,
         "rewards": {
           "berriesMin": 210,
@@ -436,7 +436,7 @@
         "name": "Combate contra os Irmãos Nyaban",
         "description": "Enfrentar a dupla de assassinos felinos que atacam em sincronia com manoplas curvas.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 14,
         "rewards": {
           "berriesMin": 240,
@@ -449,7 +449,7 @@
         "name": "Desarmar as Armadilhas da Floresta",
         "description": "Cortar redes e estacas ocultas espalhadas pelos piratas nos caminhos de terra.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 14,
         "rewards": {
           "berriesMin": 225,
@@ -462,7 +462,7 @@
         "name": "Cerco à Mansão de Pedra",
         "description": "Expulsar os últimos invasores do grande hall e defender os portões principais.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 15,
         "rewards": {
           "berriesMin": 290,
@@ -523,7 +523,7 @@
         "name": "Atracar no Convés dos Cozinheiros",
         "description": "Amarrar o navio nas quilhas do Baratie e experimentar um prato revigorante nas mesas de bordo.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 16,
         "rewards": {
           "berriesMin": 180,
@@ -536,7 +536,7 @@
         "name": "Repelir Marinheiros Insolentes",
         "description": "Oficiais arrogantes da Marinha recusam pagar a conta. Ensine boas maneiras a eles no convés exterior.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 16,
         "rewards": {
           "berriesMin": 200,
@@ -549,7 +549,7 @@
         "name": "Pesca de Feras Marinhas Famintas",
         "description": "Ajudar os chefs a pescar caranguejos colossais e peixes de combate para o banquete da noite.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 17,
         "rewards": {
           "berriesMin": 230,
@@ -562,7 +562,7 @@
         "name": "O Navio Destroçado da Armada",
         "description": "A nau capitânia de Don Krieg retorna da temida Grand Line completamente partida ao meio. Investigue os destroços.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 17,
         "rewards": {
           "berriesMin": 220,
@@ -590,7 +590,7 @@
         "name": "Conter o Incêndio no Casco",
         "description": "Balas incendiárias da frota de Krieg atingiram a cozinha central. Apague o fogo e salve as despensas.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 18,
         "rewards": {
           "berriesMin": 260,
@@ -603,7 +603,7 @@
         "name": "Batalha nas Barbatanas de Combate",
         "description": "As plataformas laterais do Baratie foram baixadas! Lute contra dezenas de piratas famintos em pleno oceano.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 19,
         "rewards": {
           "berriesMin": 310,
@@ -616,7 +616,7 @@
         "name": "Derrubar Pearl da Parede de Ferro",
         "description": "Um guerreiro protegido por escudos maciços e fagulhas de fogo tenta afundar o restaurante flutuante.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 19,
         "rewards": {
           "berriesMin": 330,
@@ -629,7 +629,7 @@
         "name": "Desviar do Gás Venenoso MH5",
         "description": "Don Krieg dispara sua bomba química covarde. Use panos molhados e avance contra a linha de fogo.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 20,
         "rewards": {
           "berriesMin": 370,
@@ -690,7 +690,7 @@
         "name": "Desembarque na Ilha de Conomi",
         "description": "Testemunhar vilarejos inteiros com casas viradas de cabeça para baixo pelo poder monstruoso dos Homens-Peixe.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 21,
         "rewards": {
           "berriesMin": 250,
@@ -703,7 +703,7 @@
         "name": "Resgate da Vila Kokoyashi",
         "description": "Impedir que cobradores armados confisquem os últimos pertences e pomares de tangerina dos moradores.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 21,
         "rewards": {
           "berriesMin": 270,
@@ -716,7 +716,7 @@
         "name": "Confrontar a Marinha Corrupta (Nezumi)",
         "description": "O comodoro corrupto Nezumi veio confiscar o dinheiro reunido para a libertação da ilha. Dê uma surra nele!",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 22,
         "rewards": {
           "berriesMin": 310,
@@ -729,7 +729,7 @@
         "name": "Derrubar os Portões do Parque",
         "description": "Marchar com a população furiosa e quebrar os portões maciços com o brasão do tubarão dente-de-serra.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 22,
         "rewards": {
           "berriesMin": 340,
@@ -757,7 +757,7 @@
         "name": "Combate nas Piscinas Internas",
         "description": "Lutar sobre pontes estreitas evitando ser puxado para a água onde a força dos homens-peixe decuplica.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 23,
         "rewards": {
           "berriesMin": 380,
@@ -770,7 +770,7 @@
         "name": "Duelo das Seis Espadas: Hatchan",
         "description": "O simpático porém feroz homem-peixe polvo brande espadas pesadíssimas com seus múltiplos tentáculos.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 24,
         "rewards": {
           "berriesMin": 420,
@@ -783,7 +783,7 @@
         "name": "Incursão à Sala de Cartografia",
         "description": "Subir ao topo da torre imperial e encontrar anos de mapas de navegação desenhados sob lágrimas e escravidão.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 24,
         "rewards": {
           "berriesMin": 450,
@@ -796,7 +796,7 @@
         "name": "Destruir a Torre do Tirano",
         "description": "Golpear as colunas estruturais do palácio para quebrar os símbolos de opressão do parque.",
         "energyCost": 10,
-        "durationSeconds": 3600,
+        "durationSeconds": 3599,
         "recommendedLevel": 25,
         "rewards": {
           "berriesMin": 520,

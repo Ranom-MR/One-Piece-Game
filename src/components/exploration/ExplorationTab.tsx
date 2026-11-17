@@ -841,7 +841,7 @@ export function ExplorationTab({
                           <span className="text-slate-400 text-[10px] uppercase font-bold">Duração</span>
                           <span className="text-sky-300 font-bold flex items-center gap-1">
                             <Clock className="w-3.5 h-3.5 text-sky-400" />
-                            {inspectedQuest.isBoss || inspectedQuest.isMiniBoss ? 'Batalha' : '1 Hora'}
+                            {inspectedQuest.isBoss || inspectedQuest.isMiniBoss ? 'Batalha' : '59m59s'}
                           </span>
                         </div>
 
@@ -964,7 +964,7 @@ export function ExplorationTab({
                               ) : (
                                 <>
                                   <Zap className="w-4 h-4 fill-current" />
-                                  <span>10⚡ Iniciar Expedição (1h)</span>
+                                  <span>10⚡ Iniciar Expedição (59m59s)</span>
                                 </>
                               )}
                             </button>
@@ -1080,7 +1080,7 @@ export function ExplorationTab({
                         ) : (
                           <span className="text-sky-400 font-bold flex items-center hidden sm:flex">
                             <Clock className="w-3 h-3 mr-0.5" />
-                            1h
+                            59m59s
                           </span>
                         )}
                       </div>
@@ -1146,7 +1146,7 @@ export function ExplorationTab({
                           className="px-3 py-1 rounded-lg font-black text-xs transition shadow flex items-center space-x-1 cursor-pointer active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap shrink-0 bg-amber-500 hover:bg-amber-400 text-slate-950"
                         >
                           <Zap className="w-3 h-3 fill-current" />
-                          <span>10⚡ Iniciar (1h)</span>
+                          <span>10⚡ Iniciar (59m59s)</span>
                         </button>
                       )}
                     </div>

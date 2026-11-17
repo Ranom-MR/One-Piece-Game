@@ -29,14 +29,117 @@ import {
   Sparkles,
 } from 'lucide-react';
 
+// ============================================================================
+// BASES DE DADOS DE NOMES E SOBRENOMES TEMÁTICOS DE ONE PIECE
+// ============================================================================
+export const ONE_PIECE_CANONICAL_SURNAMES = [
+  'Monkey D.',
+  'Roronoa',
+  'Trafalgar',
+  'Portgas D.',
+  'Gol D.',
+  'Dracule',
+  'Silvers',
+  'Donquixote',
+  'Vinsmoke',
+  'Marshall D.',
+  'Charlotte',
+  'Kozuki',
+  'Shimotsuki',
+  'Eustass',
+  'Nefertari',
+  'Edward',
+  'Bartholomew',
+  'Capone',
+  'Jaguar D.',
+  'Kurozumi',
+  'Boa',
+  'Bellamy',
+  'Buggy',
+];
+
+export const ONE_PIECE_FIRST_NAMES = [
+  'Luffy',
+  'Zoro',
+  'Nami',
+  'Usopp',
+  'Sanji',
+  'Chopper',
+  'Robin',
+  'Franky',
+  'Brook',
+  'Jinbe',
+  'Ace',
+  'Sabo',
+  'Law',
+  'Kid',
+  'Killer',
+  'Bonney',
+  'Bege',
+  'Marco',
+  'Yamato',
+  'Perona',
+  'Hancock',
+  'Vivi',
+  'Carrot',
+  'Reiju',
+  'Koala',
+  'Tashigi',
+  'Koby',
+  'Roger',
+  'Rayleigh',
+  'Garp',
+  'Dragon',
+  'Smoker',
+  'Mihawk',
+  'Shanks',
+  'Katakuri',
+  'Pedro',
+  'Kuzan',
+  'Borsalino',
+  'Sakazuki',
+  'Bartolomeo',
+  'Cavendish',
+  'Kuma',
+  'Crocodile',
+  'Enel',
+  'Lucci',
+  'Oden',
+];
+
+export function getRandomOnePieceName(format: 'firstOnly' | 'full'): string {
+  const randomFirst = ONE_PIECE_FIRST_NAMES[Math.floor(Math.random() * ONE_PIECE_FIRST_NAMES.length)];
+  if (format === 'firstOnly') {
+    return randomFirst;
+  }
+  // Para formato com sobrenome, garante que o nome completo não exceda 20 caracteres (limite do jogo)
+  for (let i = 0; i < 40; i++) {
+    const s = ONE_PIECE_CANONICAL_SURNAMES[Math.floor(Math.random() * ONE_PIECE_CANONICAL_SURNAMES.length)];
+    const f = ONE_PIECE_FIRST_NAMES[Math.floor(Math.random() * ONE_PIECE_FIRST_NAMES.length)];
+    const combined = `${s} ${f}`;
+    if (combined.length <= 20) {
+      return combined;
+    }
+  }
+  return 'Monkey D. Luffy';
+}
+
 interface CharacterCreationFlowProps {
   onCharacterCreated: (player: Player) => void;
 }
 
 export function CharacterCreationFlow({ onCharacterCreated }: CharacterCreationFlowProps) {
   const [name, setName] = useState('');
+  const [nameFormat, setNameFormat] = useState<'firstOnly' | 'full'>('full');
   const [appearance, setAppearance] = useState<PirateAppearance>(DEFAULT_APPEARANCE);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+
+  // Sorteio Aleatório de Nome Temático (One Piece)
+  function handleRandomizeName() {
+    const generated = getRandomOnePieceName(nameFormat);
+    setName(generated);
+    if (errorMsg) setErrorMsg(null);
+  }
 
   // Auxiliar para ciclar opções (setas ◀ e ▶)
   function cycleOption<T>(
@@ -311,21 +414,63 @@ export function CharacterCreationFlow({ onCharacterCreated }: CharacterCreationF
 
           {/* 3. Campo de Nome do Pirata & Botão Zarpar */}
           <div className="space-y-4 pt-4 border-t border-slate-800">
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center">
-                <User className="w-3.5 h-3.5 mr-1.5 text-amber-400" /> Nome do Pirata
-              </label>
-              <input
-                type="text"
-                placeholder="Digite o nome do seu capitão (ex: Monkey D. Luffy)"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                  if (errorMsg) setErrorMsg(null);
-                }}
-                maxLength={20}
-                className="w-full px-3.5 py-3 bg-slate-900 border border-slate-700 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition font-bold text-sm shadow-inner"
-              />
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <label className="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center">
+                  <User className="w-3.5 h-3.5 mr-1.5 text-amber-400" /> Nome do Pirata
+                </label>
+
+                {/* Alternador de Formato: Apenas Nome vs Nome + Sobrenome */}
+                <div className="flex items-center gap-1 bg-slate-950/70 p-0.5 rounded-lg border border-slate-800 text-[11px]">
+                  <button
+                    type="button"
+                    onClick={() => setNameFormat('firstOnly')}
+                    className={`px-2 py-0.5 rounded-md font-semibold transition cursor-pointer ${
+                      nameFormat === 'firstOnly'
+                        ? 'bg-amber-500 text-slate-950 shadow-sm font-bold'
+                        : 'text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    Apenas Nome
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setNameFormat('full')}
+                    className={`px-2 py-0.5 rounded-md font-semibold transition cursor-pointer ${
+                      nameFormat === 'full'
+                        ? 'bg-amber-500 text-slate-950 shadow-sm font-bold'
+                        : 'text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    Nome + Sobrenome
+                  </button>
+                </div>
+              </div>
+
+              {/* Input com Botão de Sorteio Temático One Piece */}
+              <div className="flex items-center gap-2">
+                <input
+                  type="text"
+                  placeholder={nameFormat === 'full' ? 'Ex: Monkey D. Luffy' : 'Ex: Luffy'}
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    if (errorMsg) setErrorMsg(null);
+                  }}
+                  maxLength={20}
+                  className="flex-1 px-3.5 py-3 bg-slate-900 border border-slate-700 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500 transition font-bold text-sm shadow-inner"
+                />
+                <button
+                  type="button"
+                  onClick={handleRandomizeName}
+                  title="Sortear nome aleatório do universo One Piece"
+                  className="px-3.5 py-3 bg-slate-800 hover:bg-amber-500 hover:text-slate-950 text-amber-300 border border-amber-500/30 hover:border-amber-400 rounded-xl font-bold transition active:scale-95 flex items-center gap-1.5 cursor-pointer shadow-md shrink-0"
+                >
+                  <Dices className="w-4 h-4" />
+                  <span className="text-xs">Sortear</span>
+                </button>
+              </div>
+
               {errorMsg && <p className="text-xs text-red-400 font-bold">{errorMsg}</p>}
             </div>
 

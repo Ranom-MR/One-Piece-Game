@@ -18,6 +18,7 @@ import { ExplorationTab } from '@/components/exploration/ExplorationTab';
 import { DojoArena } from '@/components/dojo/DojoArena';
 import { PirateAvatar } from '@/components/PirateAvatar';
 import { WantedPoster } from '@/components/WantedPoster';
+import { CharacterStats } from '@/components/CharacterStats';
 import { CombatModal } from '@/components/combat/CombatModal';
 import { calculateGearBonuses } from '@/data/equipmentItems';
 import { getAvatarById } from '@/data/avatars';
@@ -40,23 +41,28 @@ import {
   Award,
   Clock,
   X,
-  Brain,
 } from 'lucide-react';
 
 type Tab = 'STATUS' | 'EXPLORAR' | 'TREINO' | 'INVENTARIO';
 
 const TRAINING_ENERGY_COST = 5;
-const TRAINING_DURATION_SECONDS = 1800; // 30 minutos
+const TRAINING_DURATION_SECONDS = 1799; // 29 minutos e 59 segundos (29m59s)
 const QUEST_ENERGY_COST = 10;
-const STANDARD_QUEST_DURATION_SECONDS = 3600; // 1 hora (3600s) para missões padrão
+const STANDARD_QUEST_DURATION_SECONDS = 3599; // 59 minutos e 59 segundos (59m59s)
 
-function formatTrainingTime(totalSeconds: number): string {
-  const hours = Math.floor(totalSeconds / 3600);
-  const mins = Math.floor((totalSeconds % 3600) / 60);
-  const secs = totalSeconds % 60;
-  if (hours > 0) {
-    return `${hours}h ${mins.toString().padStart(2, '0')}m ${secs.toString().padStart(2, '0')}s`;
-  }
+/**
+ * Formata o mostrador de minutos e segundos (MM:SS) com proteção estrita contra extrapolação.
+ * Garante que o relógio processe e exiba rigorosamente minutos e segundos padronizados,
+ * prevenindo quebra de layout, quebras de linha em botões e valores extrapolados.
+ */
+function formatTrainingTime(
+  totalSeconds: number,
+  maxLimitSeconds: number = STANDARD_QUEST_DURATION_SECONDS
+): string {
+  const safeSeconds = Math.max(0, Math.floor(totalSeconds));
+  const clampedSeconds = Math.min(maxLimitSeconds, safeSeconds);
+  const mins = Math.floor(clampedSeconds / 60);
+  const secs = clampedSeconds % 60;
   return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 }
 
@@ -164,24 +170,32 @@ export default function GamePage() {
   }
 
   function allocatePoint(attr: keyof PlayerAttributes) {
-    if (player!.availableAttributePoints <= 0) return;
+    if (!player || player.availableAttributePoints <= 0) return;
     const attrNames: Record<keyof PlayerAttributes, string> = {
-      strength: 'Força Física',
+      strength: 'Força',
       intelligence: 'Inteligência',
       agility: 'Agilidade',
       resistance: 'Resistência',
       fruitPower: 'Poder de Fruta (Legado)',
     };
-    const currentVal = player!.attributes[attr] ?? (attr === 'intelligence' ? (player!.attributes.fruitPower ?? 5) : 5);
-    const updated: Player = {
-      ...player!,
-      availableAttributePoints: player!.availableAttributePoints - 1,
-      attributes: {
-        ...player!.attributes,
-        [attr]: currentVal + 1,
-      },
-    };
-    updateAndSavePlayer(updated);
+
+    setPlayer((prev) => {
+      if (!prev || prev.availableAttributePoints <= 0) return prev;
+      const currentVal =
+        (prev.attributes[attr] as number) ??
+        (attr === 'intelligence' ? (prev.attributes.fruitPower as number) ?? 5 : 5);
+      const updated: Player = {
+        ...prev,
+        availableAttributePoints: prev.availableAttributePoints - 1,
+        attributes: {
+          ...prev.attributes,
+          [attr]: currentVal + 1,
+        },
+      };
+      savePlayer(updated);
+      return updated;
+    });
+
     showMessage(`+1 ponto alocado em ${attrNames[attr]}! ✨`);
   }
 
@@ -219,7 +233,7 @@ export default function GamePage() {
     };
 
     updateAndSavePlayer(updated);
-    showMessage(`🏋️ Treino de ${name} iniciado! Duração: 30 minutos (-${TRAINING_ENERGY_COST} Energia).`);
+    showMessage(`🏋️ Treino de ${name} iniciado! Duração: 29m59s (-${TRAINING_ENERGY_COST} Energia).`);
   }
 
   function completeTraining() {
@@ -265,14 +279,14 @@ export default function GamePage() {
       return;
     }
 
-    // Missão Padrão: Duração de 1 hora (3600s) com cooldown em tempo real
+    // Missão Padrão: Duração de 59m59s (3599s) com cooldown em tempo real
     if (player.activeQuest) {
       showMessage('Já existe uma missão de exploração em andamento!');
       return;
     }
 
     const now = Date.now();
-    const duration = STANDARD_QUEST_DURATION_SECONDS; // 3600
+    const duration = STANDARD_QUEST_DURATION_SECONDS; // 3599s (59m59s)
     const activeQuestData: ActiveQuest = {
       questId: quest.id,
       questName: quest.name,
@@ -294,7 +308,7 @@ export default function GamePage() {
     };
 
     updateAndSavePlayer(updatedPlayer);
-    showMessage(`🧭 Missão "${quest.name}" iniciada! Duração: 1 hora (-${quest.energyCost} Energia).`);
+    showMessage(`🧭 Missão "${quest.name}" iniciada! Duração: 59m59s (-${quest.energyCost} Energia).`);
   }
 
   function completeStandardQuest() {
@@ -772,216 +786,15 @@ export default function GamePage() {
                   </div>
                 </div>
 
-                {/* Grade de Atributos Principais */}
-                <div className="bg-slate-950/70 p-5 rounded-2xl border border-slate-800 shadow-lg space-y-3.5">
-                  <h3 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center">
-                    <Swords className="w-4 h-4 mr-2 text-amber-500" /> Atributos de Combate
-                  </h3>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {/* Força Física */}
-                    <div className="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between">
-                      <div>
-                        <div className="flex items-center space-x-1.5">
-                          <span className="text-sm font-bold text-slate-200">Força Física</span>
-                          {equippedFruit?.statMultipliers.strengthMultiplier && equippedFruit.statMultipliers.strengthMultiplier > 1 && (
-                            <span className="text-[10px] text-amber-300 font-bold bg-amber-950/80 px-1.5 py-0.5 rounded border border-amber-600/40">
-                              +{((equippedFruit.statMultipliers.strengthMultiplier - 1) * 100).toFixed(1).replace('.0', '')}%
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-[11px] text-slate-400">Dano físico base e cortes</p>
-                      </div>
-                      <div className="flex items-center space-x-2.5">
-                        <div className="text-right">
-                          <div className="flex items-baseline space-x-1 justify-end">
-                            <span className="font-black text-base text-amber-400">
-                              {player.attributes.strength}
-                            </span>
-                            {gearBonuses.strength > 0 && (
-                              <span className="text-xs font-bold text-emerald-400" title={`+${gearBonuses.strength} de equipamentos`}>
-                                (+{gearBonuses.strength})
-                              </span>
-                            )}
-                          </div>
-                          {(gearBonuses.strength > 0 || (equippedFruit?.statMultipliers.strengthMultiplier && equippedFruit.statMultipliers.strengthMultiplier > 1)) && (
-                            <span className="text-[10px] text-slate-400 block -mt-0.5">
-                              Total: {effectiveAttributes.strength}
-                            </span>
-                          )}
-                        </div>
-                        {player.availableAttributePoints > 0 && (
-                          <button
-                            onClick={() => allocatePoint('strength')}
-                            className="p-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-lg font-bold transition shadow cursor-pointer active:scale-95"
-                            title="Distribuir 1 ponto em Força Física"
-                          >
-                            <Plus className="w-4 h-4" />
-                          </button>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Inteligência */}
-                    <div className="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between">
-                      <div>
-                        <div className="flex items-center space-x-1.5">
-                          <span className="text-sm font-bold text-sky-300 flex items-center">
-                            <Brain className="w-3.5 h-3.5 mr-1 text-sky-400" /> Inteligência
-                          </span>
-                          {(equippedFruit?.statMultipliers.intelligenceMultiplier || equippedFruit?.statMultipliers.fruitPowerMultiplier) && (equippedFruit.statMultipliers.intelligenceMultiplier || equippedFruit.statMultipliers.fruitPowerMultiplier)! > 1 && (
-                            <span className="text-[10px] text-sky-300 font-bold bg-sky-950/80 px-1.5 py-0.5 rounded border border-sky-600/40">
-                              +{(((equippedFruit.statMultipliers.intelligenceMultiplier || equippedFruit.statMultipliers.fruitPowerMultiplier)! - 1) * 100).toFixed(1).replace('.0', '')}%
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-[11px] text-slate-400">Porcentagem de Acerto Crítico</p>
-                      </div>
-                      <div className="flex items-center space-x-2.5">
-                        <div className="text-right">
-                          <div className="flex items-baseline space-x-1 justify-end">
-                            <span className="font-black text-base text-sky-400">
-                              {player.attributes.intelligence ?? player.attributes.fruitPower ?? 5}
-                            </span>
-                            {gearBonuses.intelligence > 0 && (
-                              <span className="text-xs font-bold text-emerald-400" title={`+${gearBonuses.intelligence} de equipamentos`}>
-                                (+{gearBonuses.intelligence})
-                              </span>
-                            )}
-                          </div>
-                          {(gearBonuses.intelligence > 0 || ((equippedFruit?.statMultipliers.intelligenceMultiplier || equippedFruit?.statMultipliers.fruitPowerMultiplier) && (equippedFruit.statMultipliers.intelligenceMultiplier || equippedFruit.statMultipliers.fruitPowerMultiplier)! > 1)) && (
-                            <span className="text-[10px] text-slate-400 block -mt-0.5">
-                              Total: {effectiveAttributes.intelligence}
-                            </span>
-                          )}
-                        </div>
-                        {player.availableAttributePoints > 0 && (
-                          <button
-                            onClick={() => allocatePoint('intelligence')}
-                            className="p-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg font-bold transition shadow cursor-pointer active:scale-95"
-                            title="Distribuir 1 ponto em Inteligência"
-                          >
-                            <Plus className="w-4 h-4" />
-                          </button>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Agilidade */}
-                    <div className="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between">
-                      <div>
-                        <div className="flex items-center space-x-1.5">
-                          <span className="text-sm font-bold text-emerald-300">Agilidade</span>
-                          {equippedFruit?.statMultipliers.agilityMultiplier && equippedFruit.statMultipliers.agilityMultiplier > 1 && (
-                            <span className="text-[10px] text-cyan-300 font-bold bg-cyan-950/80 px-1.5 py-0.5 rounded border border-cyan-600/40">
-                              +{((equippedFruit.statMultipliers.agilityMultiplier - 1) * 100).toFixed(1).replace('.0', '')}%
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-[11px] text-slate-400">Iniciativa & Chance de Esquiva</p>
-                      </div>
-                      <div className="flex items-center space-x-2.5">
-                        <div className="text-right">
-                          <div className="flex items-baseline space-x-1 justify-end">
-                            <span className="font-black text-base text-emerald-400">
-                              {player.attributes.agility}
-                            </span>
-                            {gearBonuses.agility > 0 && (
-                              <span className="text-xs font-bold text-emerald-400" title={`+${gearBonuses.agility} de equipamentos`}>
-                                (+{gearBonuses.agility})
-                              </span>
-                            )}
-                          </div>
-                          {(gearBonuses.agility > 0 || (equippedFruit?.statMultipliers.agilityMultiplier && equippedFruit.statMultipliers.agilityMultiplier > 1)) && (
-                            <span className="text-[10px] text-slate-400 block -mt-0.5">
-                              Total: {effectiveAttributes.agility}
-                            </span>
-                          )}
-                        </div>
-                        {player.availableAttributePoints > 0 && (
-                          <button
-                            onClick={() => allocatePoint('agility')}
-                            className="p-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 rounded-lg font-bold transition shadow cursor-pointer active:scale-95"
-                            title="Distribuir 1 ponto em Agilidade"
-                          >
-                            <Plus className="w-4 h-4" />
-                          </button>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Resistência */}
-                    <div className="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between">
-                      <div>
-                        <div className="flex items-center space-x-1.5">
-                          <span className="text-sm font-bold text-rose-300">Resistência</span>
-                          {equippedFruit?.statMultipliers.resistanceMultiplier && equippedFruit.statMultipliers.resistanceMultiplier > 1 && (
-                            <span className="text-[10px] text-rose-300 font-bold bg-rose-950/80 px-1.5 py-0.5 rounded border border-rose-600/40">
-                              +{((equippedFruit.statMultipliers.resistanceMultiplier - 1) * 100).toFixed(1).replace('.0', '')}%
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-[11px] text-slate-400">Total de Vida (HP) e Armadura</p>
-                      </div>
-                      <div className="flex items-center space-x-2.5">
-                        <div className="text-right">
-                          <div className="flex items-baseline space-x-1 justify-end">
-                            <span className="font-black text-base text-rose-400">
-                              {player.attributes.resistance}
-                            </span>
-                            {gearBonuses.resistance > 0 && (
-                              <span className="text-xs font-bold text-emerald-400" title={`+${gearBonuses.resistance} de equipamentos`}>
-                                (+{gearBonuses.resistance})
-                              </span>
-                            )}
-                          </div>
-                          {(gearBonuses.resistance > 0 || (equippedFruit?.statMultipliers.resistanceMultiplier && equippedFruit.statMultipliers.resistanceMultiplier > 1)) && (
-                            <span className="text-[10px] text-slate-400 block -mt-0.5">
-                              Total: {effectiveAttributes.resistance}
-                            </span>
-                          )}
-                        </div>
-                        {player.availableAttributePoints > 0 && (
-                          <button
-                            onClick={() => allocatePoint('resistance')}
-                            className="p-1.5 bg-rose-500 hover:bg-rose-400 text-slate-950 rounded-lg font-bold transition shadow cursor-pointer active:scale-95"
-                            title="Distribuir 1 ponto em Resistência"
-                          >
-                            <Plus className="w-4 h-4" />
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Estatísticas Derivadas em 4 Cards */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                  <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 shadow">
-                    <span className="text-slate-400 text-[11px] block font-semibold">Dano Físico</span>
-                    <span className="font-black text-amber-400 text-base">
-                      {Math.round(10 + effectiveAttributes.strength * 2.0)} pts
-                    </span>
-                  </div>
-                  <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 shadow">
-                    <span className="text-slate-400 text-[11px] block font-semibold">Acerto Crítico</span>
-                    <span className="font-black text-sky-400 text-base">
-                      {Math.min(50, Math.round(5 + effectiveAttributes.intelligence * 0.55))}%
-                    </span>
-                  </div>
-                  <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 shadow">
-                    <span className="text-slate-400 text-[11px] block font-semibold">Chance Esquiva</span>
-                    <span className="font-black text-emerald-400 text-base">
-                      {Math.min(30, Math.round(5 + effectiveAttributes.agility * 0.45))}%
-                    </span>
-                  </div>
-                  <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 shadow">
-                    <span className="text-slate-400 text-[11px] block font-semibold">Vida Total (HP)</span>
-                    <span className="font-black text-red-400 text-base">
-                      {calculateMaxHp(effectiveAttributes.resistance, player.level)} HP
-                    </span>
-                  </div>
-                </div>
+                {/* Interface de Atributos de Combate Modernizada com Barras e Ícones Temáticos */}
+                <CharacterStats
+                  player={player}
+                  effectiveAttributes={effectiveAttributes}
+                  gearBonuses={gearBonuses}
+                  equippedFruit={equippedFruit}
+                  onAllocatePoint={allocatePoint}
+                  showDerivedStats={true}
+                />
 
                 {/* Card: Akuma no Mi Ativa & Teste do Dilema */}
                 <div className="p-4 sm:p-5 bg-gradient-to-b from-purple-950/50 via-slate-900 to-purple-950/40 rounded-2xl border border-purple-800/60 shadow-xl space-y-3">
@@ -1087,14 +900,18 @@ export default function GamePage() {
           {/* ABA 2: EXPLORAR ILHAS (MAPA-MÚNDI & MISSÕES POR CAPÍTULO) */}
           {/* ========================================================= */}
           {activeTab === 'EXPLORAR' && (() => {
-            const remainingSeconds = player.activeQuest
+            const rawQuestSeconds = player.activeQuest
               ? Math.max(0, Math.ceil((player.activeQuest.endsAt - currentTime) / 1000))
               : 0;
+            const remainingSeconds = Math.min(STANDARD_QUEST_DURATION_SECONDS, rawQuestSeconds);
+            const questDuration = player.activeQuest?.durationSeconds
+              ? Math.min(STANDARD_QUEST_DURATION_SECONDS, player.activeQuest.durationSeconds)
+              : STANDARD_QUEST_DURATION_SECONDS;
             const elapsedSeconds = player.activeQuest
-              ? Math.max(0, player.activeQuest.durationSeconds - remainingSeconds)
+              ? Math.max(0, questDuration - remainingSeconds)
               : 0;
             const progressPercentage = player.activeQuest
-              ? Math.min(100, Math.max(0, (elapsedSeconds / player.activeQuest.durationSeconds) * 100))
+              ? Math.min(100, Math.max(0, (elapsedSeconds / questDuration) * 100))
               : 0;
 
             const activeQuestData = player.activeQuest
@@ -1103,19 +920,23 @@ export default function GamePage() {
                   questName: player.activeQuest.questName,
                   islandName: player.activeQuest.islandName,
                   remainingSeconds,
-                  durationSeconds: player.activeQuest.durationSeconds,
+                  durationSeconds: questDuration,
                   progressPercentage,
                 }
               : null;
 
-            const trainingRemainingSeconds = player.activeTraining
+            const rawTrainingSeconds = player.activeTraining
               ? Math.max(0, Math.ceil((player.activeTraining.endsAt - currentTime) / 1000))
               : 0;
+            const trainingRemainingSeconds = Math.min(TRAINING_DURATION_SECONDS, rawTrainingSeconds);
+            const trainingDuration = player.activeTraining?.durationSeconds
+              ? Math.min(TRAINING_DURATION_SECONDS, player.activeTraining.durationSeconds)
+              : TRAINING_DURATION_SECONDS;
             const trainingElapsedSeconds = player.activeTraining
-              ? Math.max(0, player.activeTraining.durationSeconds - trainingRemainingSeconds)
+              ? Math.max(0, trainingDuration - trainingRemainingSeconds)
               : 0;
             const trainingProgressPercentage = player.activeTraining
-              ? Math.min(100, Math.max(0, (trainingElapsedSeconds / player.activeTraining.durationSeconds) * 100))
+              ? Math.min(100, Math.max(0, (trainingElapsedSeconds / trainingDuration) * 100))
               : 0;
 
             const activeTrainingData = player.activeTraining
@@ -1123,7 +944,7 @@ export default function GamePage() {
                   attribute: player.activeTraining.attribute,
                   attributeName: player.activeTraining.attributeName,
                   remainingSeconds: trainingRemainingSeconds,
-                  durationSeconds: player.activeTraining.durationSeconds,
+                  durationSeconds: trainingDuration,
                   progressPercentage: trainingProgressPercentage,
                 }
               : null;
@@ -1148,14 +969,18 @@ export default function GamePage() {
           {/* ========================================================= */}
           {activeTab === 'TREINO' && (() => {
             const isTrainingActive = !!player.activeTraining;
-            const remainingSeconds = player.activeTraining
+            const rawTrainingSeconds = player.activeTraining
               ? Math.max(0, Math.ceil((player.activeTraining.endsAt - currentTime) / 1000))
               : 0;
+            const remainingSeconds = Math.min(TRAINING_DURATION_SECONDS, rawTrainingSeconds);
+            const trainingDuration = player.activeTraining?.durationSeconds
+              ? Math.min(TRAINING_DURATION_SECONDS, player.activeTraining.durationSeconds)
+              : TRAINING_DURATION_SECONDS;
             const elapsedSeconds = player.activeTraining
-              ? Math.max(0, player.activeTraining.durationSeconds - remainingSeconds)
+              ? Math.max(0, trainingDuration - remainingSeconds)
               : 0;
             const progressPercentage = player.activeTraining
-              ? Math.min(100, Math.max(0, (elapsedSeconds / player.activeTraining.durationSeconds) * 100))
+              ? Math.min(100, Math.max(0, (elapsedSeconds / trainingDuration) * 100))
               : 0;
 
             // Se houver treino em andamento, exibe a Arena Visual de Treinamento (ocultando a grade inferior)
@@ -1168,7 +993,7 @@ export default function GamePage() {
                     remainingSeconds={remainingSeconds}
                     progressPercentage={progressPercentage}
                     onCompleteDev={completeTraining}
-                    formatTime={formatTrainingTime}
+                    formatTime={(secs) => formatTrainingTime(secs, TRAINING_DURATION_SECONDS)}
                   />
                 </div>
               );
@@ -1176,9 +1001,10 @@ export default function GamePage() {
 
             // Informações se houver missão de exploração ativa em andamento (Bloqueio Mútuo)
             const isQuestActive = !!player.activeQuest;
-            const questRemainingSeconds = player.activeQuest
+            const rawQuestSeconds = player.activeQuest
               ? Math.max(0, Math.ceil((player.activeQuest.endsAt - currentTime) / 1000))
               : 0;
+            const questRemainingSeconds = Math.min(STANDARD_QUEST_DURATION_SECONDS, rawQuestSeconds);
 
             // Modo normal / Bloqueado por missão:
             return (
@@ -1211,7 +1037,7 @@ export default function GamePage() {
                         <div className="flex items-center space-x-2 bg-slate-950/90 px-3.5 py-1.5 rounded-xl border border-sky-800/80 shadow-inner">
                           <span className="text-xs text-slate-400 font-semibold">Retorno em:</span>
                           <span className="text-base font-mono font-black text-sky-400">
-                            ⏱️ {formatTrainingTime(questRemainingSeconds)}
+                            ⏱️ {formatTrainingTime(questRemainingSeconds, STANDARD_QUEST_DURATION_SECONDS)}
                           </span>
                         </div>
                         <button
@@ -1232,7 +1058,7 @@ export default function GamePage() {
                     <Dumbbell className="w-5 h-5 mr-2 text-amber-500" /> Academia & Dojo dos Mares
                   </h2>
                   <p className="text-xs md:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
-                    Aprimore seu corpo físico e sua afinidade espiritual. O treino consome <strong>5 de Energia</strong> e leva <strong>30 minutos</strong> de dedicação contínua, aumentando permanentemente seus atributos fundamentais (+1 ponto por ciclo).
+                    Aprimore seu corpo físico e sua afinidade espiritual. O treino consome <strong>5 de Energia</strong> e leva <strong>29m59s</strong> de dedicação contínua, aumentando permanentemente seus atributos fundamentais (+1 ponto por ciclo).
                   </p>
                 </div>
 
@@ -1278,7 +1104,7 @@ export default function GamePage() {
                             <span className="text-emerald-400 font-semibold bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-900/50">
                               +1 Ponto
                             </span>
-                            <span className="text-slate-400 text-[11px]">⏱️ 30 min</span>
+                            <span className="text-slate-400 text-[11px]">⏱️ 29m59s</span>
                           </div>
 
                           <button
@@ -1289,7 +1115,7 @@ export default function GamePage() {
                                 ? 'Capitão em expedição nas ilhas'
                                 : !canAfford
                                 ? 'Energia insuficiente (Requer 5 ⚡)'
-                                : 'Iniciar treinamento de 30 minutos'
+                                : 'Iniciar treinamento de 29m59s'
                             }
                             className={`px-4 py-2 font-black text-xs rounded-xl transition shadow flex items-center space-x-1.5 ${
                               isQuestActive
