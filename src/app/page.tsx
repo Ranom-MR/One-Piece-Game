@@ -46,9 +46,9 @@ import {
 type Tab = 'STATUS' | 'EXPLORAR' | 'TREINO' | 'INVENTARIO';
 
 const TRAINING_ENERGY_COST = 5;
-const TRAINING_DURATION_SECONDS = 1799; // 29 minutos e 59 segundos (29m59s)
+const TRAINING_DURATION_SECONDS = 1799; // 30 minutos (1799s / 29:59 regressivo)
 const QUEST_ENERGY_COST = 10;
-const STANDARD_QUEST_DURATION_SECONDS = 3599; // 59 minutos e 59 segundos (59m59s)
+const STANDARD_QUEST_DURATION_SECONDS = 3599; // 1 hora (3599s / 59:59 regressivo)
 
 /**
  * Formata o mostrador de minutos e segundos (MM:SS) com proteção estrita contra extrapolação.
@@ -233,7 +233,7 @@ export default function GamePage() {
     };
 
     updateAndSavePlayer(updated);
-    showMessage(`🏋️ Treino de ${name} iniciado! Duração: 29m59s (-${TRAINING_ENERGY_COST} Energia).`);
+    showMessage(`🏋️ Treino de ${name} iniciado! Duração: 30m (-${TRAINING_ENERGY_COST} Energia).`);
   }
 
   function completeTraining() {
@@ -279,14 +279,14 @@ export default function GamePage() {
       return;
     }
 
-    // Missão Padrão: Duração de 59m59s (3599s) com cooldown em tempo real
+    // Missão Padrão: Duração de 1h (3599s) com cooldown em tempo real
     if (player.activeQuest) {
       showMessage('Já existe uma missão de exploração em andamento!');
       return;
     }
 
     const now = Date.now();
-    const duration = STANDARD_QUEST_DURATION_SECONDS; // 3599s (59m59s)
+    const duration = STANDARD_QUEST_DURATION_SECONDS; // 3599s (1h)
     const activeQuestData: ActiveQuest = {
       questId: quest.id,
       questName: quest.name,
@@ -308,7 +308,7 @@ export default function GamePage() {
     };
 
     updateAndSavePlayer(updatedPlayer);
-    showMessage(`🧭 Missão "${quest.name}" iniciada! Duração: 59m59s (-${quest.energyCost} Energia).`);
+    showMessage(`🧭 Missão "${quest.name}" iniciada! Duração: 1h (-${quest.energyCost} Energia).`);
   }
 
   function completeStandardQuest() {
@@ -1058,17 +1058,41 @@ export default function GamePage() {
                     <Dumbbell className="w-5 h-5 mr-2 text-amber-500" /> Academia & Dojo dos Mares
                   </h2>
                   <p className="text-xs md:text-sm text-slate-300 mt-1 max-w-2xl leading-relaxed">
-                    Aprimore seu corpo físico e sua afinidade espiritual. O treino consome <strong>5 de Energia</strong> e leva <strong>29m59s</strong> de dedicação contínua, aumentando permanentemente seus atributos fundamentais (+1 ponto por ciclo).
+                    Aprimore seu corpo físico e sua afinidade espiritual. O treino consome <strong>5 de Energia</strong> e leva <strong>30m</strong> de dedicação contínua, aumentando permanentemente seus atributos fundamentais (+1 ponto por ciclo).
                   </p>
                 </div>
 
                 {/* Grade de 4 Atributos de Treino Disponíveis */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {[
-                    { key: 'strength', name: 'Força Física', icon: '⚔️', desc: 'Aumenta poder de soco, corte e dano físico' },
-                    { key: 'intelligence', name: 'Inteligência', icon: '🧠', desc: 'Aumenta a precisão e a porcentagem de acertos críticos' },
-                    { key: 'agility', name: 'Agilidade', icon: '⚡', desc: 'Aumenta reflexos rápidos, iniciativa e chance de esquiva' },
-                    { key: 'resistance', name: 'Resistência', icon: '🛡️', desc: 'Aumenta a barra de Vida (HP) máxima e absorção de dano' },
+                    {
+                      key: 'strength',
+                      name: 'Força Física',
+                      iconSrc: '/icons/stat_forca.png',
+                      iconAlt: 'Halter de ferro do Zoro (Força Física)',
+                      desc: 'Aumenta poder de soco, corte e dano físico',
+                    },
+                    {
+                      key: 'intelligence',
+                      name: 'Inteligência',
+                      iconSrc: '/icons/stat_inteligencia.png',
+                      iconAlt: 'Livro da Robin (Inteligência)',
+                      desc: 'Aumenta a precisão e a porcentagem de acertos críticos',
+                    },
+                    {
+                      key: 'agility',
+                      name: 'Agilidade',
+                      iconSrc: '/icons/stat_agilidade.png',
+                      iconAlt: 'Sandálias de palha do Luffy (Agilidade)',
+                      desc: 'Aumenta reflexos rápidos, iniciativa e chance de esquiva',
+                    },
+                    {
+                      key: 'resistance',
+                      name: 'Resistência',
+                      iconSrc: '/icons/stat_resistencia.png',
+                      iconAlt: 'Capacete de gladiador de Dressrosa (Resistência)',
+                      desc: 'Aumenta a barra de Vida (HP) máxima e absorção de dano',
+                    },
                   ].map((item) => {
                     const attrKey = item.key as keyof PlayerAttributes;
                     const canAfford = player.energy.current >= TRAINING_ENERGY_COST;
@@ -1082,10 +1106,14 @@ export default function GamePage() {
                         }`}
                       >
                         <div className="flex items-start justify-between">
-                          <div className="flex items-center space-x-3">
-                            <span className="text-3xl p-2 bg-slate-900 rounded-xl border border-slate-800">
-                              {item.icon}
-                            </span>
+                          <div className="flex items-center space-x-3.5">
+                            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-900/90 border border-slate-700/60 p-1.5 sm:p-2 flex items-center justify-center shrink-0 shadow-inner">
+                              <img
+                                src={item.iconSrc}
+                                alt={item.iconAlt}
+                                className="w-full h-full object-contain filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+                              />
+                            </div>
                             <div>
                               <h4 className="text-sm font-extrabold text-slate-100">{item.name}</h4>
                               <p className="text-xs text-slate-400 mt-0.5">{item.desc}</p>
@@ -1104,7 +1132,7 @@ export default function GamePage() {
                             <span className="text-emerald-400 font-semibold bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-900/50">
                               +1 Ponto
                             </span>
-                            <span className="text-slate-400 text-[11px]">⏱️ 29m59s</span>
+                            <span className="text-slate-400 text-[11px]">⏱️ 30m</span>
                           </div>
 
                           <button
@@ -1115,7 +1143,7 @@ export default function GamePage() {
                                 ? 'Capitão em expedição nas ilhas'
                                 : !canAfford
                                 ? 'Energia insuficiente (Requer 5 ⚡)'
-                                : 'Iniciar treinamento de 29m59s'
+                                : 'Iniciar treinamento de 30m'
                             }
                             className={`px-4 py-2 font-black text-xs rounded-xl transition shadow flex items-center space-x-1.5 ${
                               isQuestActive

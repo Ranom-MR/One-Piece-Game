@@ -384,7 +384,6 @@ export function ExplorationTab({
             const coords = island.mapCoordinates || { x: 13.6 + index * 18, y: 54.0 };
             const unlocked = isIslandUnlocked(index);
             const cleared = isIslandFullyCleared(island);
-            const completedCount = getCompletedQuestsCount(island);
 
             return (
               <div
@@ -393,9 +392,9 @@ export function ExplorationTab({
                   left: `${coords.x}%`,
                   top: `${coords.y}%`,
                 }}
-                className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-20 group/island"
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-20"
               >
-                {/* Botão Clicável no Hotspot da Ilha */}
+                {/* Botão Interativo Unificado (Pin + Card com Nome da Ilha) */}
                 <button
                   type="button"
                   onClick={() => {
@@ -405,63 +404,61 @@ export function ExplorationTab({
                       setNotification(`A rota para ${island.name} está bloqueada! Conclua o Capítulo ${island.chapterNumber - 1} primeiro.`);
                     }
                   }}
-                  className={`relative flex items-center justify-center transition-all duration-300 cursor-pointer ${
+                  className={`group/island flex flex-col items-center transition-all duration-300 ${
                     unlocked
-                      ? 'transform hover:scale-125 active:scale-95'
+                      ? 'cursor-pointer hover:scale-110 active:scale-95'
                       : 'cursor-not-allowed opacity-85'
                   }`}
-                  title={`${island.name} (Capítulo ${island.chapterNumber}) — ${unlocked ? 'Clique para explorar missões' : 'Bloqueada'}`}
+                  title={`${island.name} (Capítulo ${island.chapterNumber}) — ${unlocked ? 'Clique para abrir missões' : 'Bloqueada'}`}
                 >
-                  {/* Ilha 100% Concluída: Pin Dourado com Estrela */}
-                  {cleared && (
-                    <div className="relative flex items-center justify-center">
+                  {/* Ícone / Pin Central */}
+                  <div className="relative flex items-center justify-center transition-transform duration-300 group-hover/island:scale-115">
+                    {/* Ilha 100% Concluída: Pin Dourado com Estrela */}
+                    {cleared && (
                       <span className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 font-black shadow-[0_0_20px_rgba(251,191,36,0.9)] ring-2 sm:ring-4 ring-amber-300/80 flex items-center justify-center text-sm sm:text-base">
                         ⭐
                       </span>
-                    </div>
-                  )}
+                    )}
 
-                  {/* Ilha Desbloqueada & Em Andamento: Farol / Bússola Pulsante */}
-                  {unlocked && !cleared && (
-                    <div className="relative flex items-center justify-center">
-                      {/* Onda de radar expandindo */}
-                      <span className="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-sky-400/40 animate-ping pointer-events-none" />
-                      {/* Pin Central Ativo */}
-                      <span className="relative w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-sky-600 via-sky-500 to-amber-500 text-white font-black shadow-[0_0_25px_rgba(14,165,233,0.95)] ring-2 sm:ring-4 ring-white flex items-center justify-center">
-                        <Ship className="w-4 h-4 sm:w-6 sm:h-6 text-white drop-shadow" />
-                      </span>
-                    </div>
-                  )}
+                    {/* Ilha Desbloqueada & Em Andamento: Farol / Bússola Pulsante */}
+                    {unlocked && !cleared && (
+                      <div className="relative flex items-center justify-center">
+                        {/* Onda de radar expandindo */}
+                        <span className="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-sky-400/40 animate-ping pointer-events-none" />
+                        {/* Pin Central Ativo */}
+                        <span className="relative w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-sky-600 via-sky-500 to-amber-500 text-white font-black shadow-[0_0_25px_rgba(14,165,233,0.95)] ring-2 sm:ring-4 ring-white flex items-center justify-center">
+                          <Ship className="w-4 h-4 sm:w-6 sm:h-6 text-white drop-shadow" />
+                        </span>
+                      </div>
+                    )}
 
-                  {/* Ilha Bloqueada: Cadeado Protetor */}
-                  {!unlocked && (
-                    <div className="relative flex items-center justify-center">
+                    {/* Ilha Bloqueada: Cadeado Protetor */}
+                    {!unlocked && (
                       <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-slate-950/90 text-slate-400 border-2 border-slate-700 shadow-xl flex items-center justify-center">
                         <Lock className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400" />
                       </span>
-                    </div>
-                  )}
-                </button>
+                    )}
+                  </div>
 
-                {/* Placa / Rótulo da Ilha com Nome e Progresso */}
-                <div className="mt-1 sm:mt-2 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg bg-slate-950/90 backdrop-blur-md border border-amber-900/80 shadow-2xl text-center pointer-events-none transition-transform duration-200 group-hover/island:scale-110">
-                  <p className="text-[9px] sm:text-xs font-black uppercase text-amber-200 font-serif tracking-wide whitespace-nowrap">
-                    {island.name}
-                  </p>
-                  <p className={`text-[8px] sm:text-[10px] font-bold whitespace-nowrap ${
+                  {/* Placa Flutuante Compacta com Apenas o Nome da Ilha em Destaque */}
+                  <div className={`mt-1 sm:mt-1.5 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg backdrop-blur-md shadow-2xl text-center border transition-all duration-200 ${
                     cleared
-                      ? 'text-amber-400 font-extrabold'
+                      ? 'bg-slate-950/95 border-amber-500/70 shadow-amber-950/50 group-hover/island:border-amber-400 group-hover/island:bg-amber-950/70'
                       : unlocked
-                      ? 'text-emerald-400'
-                      : 'text-slate-500'
+                      ? 'bg-slate-950/95 border-amber-900/80 shadow-sky-950/40 group-hover/island:border-sky-400 group-hover/island:bg-slate-900/95'
+                      : 'bg-slate-950/85 border-slate-800'
                   }`}>
-                    {cleared
-                      ? '★ Concluído'
-                      : unlocked
-                      ? `Capítulo ${island.chapterNumber}: Disponível`
-                      : 'Bloqueada 🔒'}
-                  </p>
-                </div>
+                    <p className={`text-[9px] sm:text-xs font-black uppercase font-serif tracking-wide whitespace-nowrap ${
+                      cleared
+                        ? 'text-amber-300'
+                        : unlocked
+                        ? 'text-amber-200 group-hover/island:text-white'
+                        : 'text-slate-400'
+                    }`}>
+                      {island.name}
+                    </p>
+                  </div>
+                </button>
               </div>
             );
           })}
@@ -841,7 +838,7 @@ export function ExplorationTab({
                           <span className="text-slate-400 text-[10px] uppercase font-bold">Duração</span>
                           <span className="text-sky-300 font-bold flex items-center gap-1">
                             <Clock className="w-3.5 h-3.5 text-sky-400" />
-                            {inspectedQuest.isBoss || inspectedQuest.isMiniBoss ? 'Batalha' : '59m59s'}
+                            {inspectedQuest.isBoss || inspectedQuest.isMiniBoss ? 'Batalha' : '1h'}
                           </span>
                         </div>
 
@@ -964,7 +961,7 @@ export function ExplorationTab({
                               ) : (
                                 <>
                                   <Zap className="w-4 h-4 fill-current" />
-                                  <span>10⚡ Iniciar Expedição (59m59s)</span>
+                                  <span>10⚡ Iniciar Expedição (1h)</span>
                                 </>
                               )}
                             </button>
@@ -1080,7 +1077,7 @@ export function ExplorationTab({
                         ) : (
                           <span className="text-sky-400 font-bold flex items-center hidden sm:flex">
                             <Clock className="w-3 h-3 mr-0.5" />
-                            59m59s
+                            1h
                           </span>
                         )}
                       </div>
@@ -1146,7 +1143,7 @@ export function ExplorationTab({
                           className="px-3 py-1 rounded-lg font-black text-xs transition shadow flex items-center space-x-1 cursor-pointer active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap shrink-0 bg-amber-500 hover:bg-amber-400 text-slate-950"
                         >
                           <Zap className="w-3 h-3 fill-current" />
-                          <span>10⚡ Iniciar (59m59s)</span>
+                          <span>10⚡ Iniciar (1h)</span>
                         </button>
                       )}
                     </div>

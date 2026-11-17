@@ -29,39 +29,39 @@ export function DojoArena({
     switch (activeTraining.attribute) {
       case 'strength':
         return {
-          icon: <Swords className="w-4 h-4 text-amber-400" />,
+          icon: <img src="/icons/stat_forca.png" alt="Força Física" className="w-4 h-4 object-contain inline-block filter drop-shadow" />,
           title: 'Treino de Força Física',
           actionText: 'Desferindo sequências de socos pesados e golpes no tronco de carvalho!',
-          impactColor: 'text-amber-400',
-          badgeBg: 'bg-amber-950/60 border-amber-800/70 text-amber-300',
+          impactColor: 'text-orange-400',
+          badgeBg: 'bg-orange-950/60 border-orange-800/70 text-orange-300',
           sparkEmoji: '💥',
         };
-      case 'fruitPower':
+      case 'intelligence':
         return {
-          icon: <Sparkles className="w-4 h-4 text-purple-400" />,
-          title: 'Treino de Poder de Akuma no Mi',
-          actionText: 'Canalizando energia sobrenatural e dominando as técnicas da fruta!',
-          impactColor: 'text-purple-400',
-          badgeBg: 'bg-purple-950/60 border-purple-800/70 text-purple-300',
-          sparkEmoji: '✨',
+          icon: <img src="/icons/stat_inteligencia.png" alt="Inteligência" className="w-4 h-4 object-contain inline-block filter drop-shadow" />,
+          title: 'Treino de Inteligência & Foco',
+          actionText: 'Estudando táticas de combate e calibrando a precisão de acertos críticos!',
+          impactColor: 'text-indigo-400',
+          badgeBg: 'bg-indigo-950/60 border-indigo-800/70 text-indigo-300',
+          sparkEmoji: '🧠',
         };
       case 'agility':
         return {
-          icon: <Zap className="w-4 h-4 text-emerald-400" />,
+          icon: <img src="/icons/stat_agilidade.png" alt="Agilidade" className="w-4 h-4 object-contain inline-block filter drop-shadow" />,
           title: 'Treino de Agilidade & Reflexos',
           actionText: 'Esquivando dos braços de madeira e aprimorando velocidade de reação!',
-          impactColor: 'text-emerald-400',
-          badgeBg: 'bg-emerald-950/60 border-emerald-800/70 text-emerald-300',
+          impactColor: 'text-amber-400',
+          badgeBg: 'bg-amber-950/60 border-amber-800/70 text-amber-300',
           sparkEmoji: '⚡',
         };
       case 'resistance':
       default:
         return {
-          icon: <Shield className="w-4 h-4 text-rose-400" />,
+          icon: <img src="/icons/stat_resistencia.png" alt="Resistência" className="w-4 h-4 object-contain inline-block filter drop-shadow" />,
           title: 'Treino de Resistência & Vigor',
           actionText: 'Calejando os punhos e absorvendo impactos contínuos para elevar o HP!',
-          impactColor: 'text-rose-400',
-          badgeBg: 'bg-rose-950/60 border-rose-800/70 text-rose-300',
+          impactColor: 'text-red-500',
+          badgeBg: 'bg-red-950/60 border-red-800/70 text-red-300',
           sparkEmoji: '🛡️',
         };
     }
