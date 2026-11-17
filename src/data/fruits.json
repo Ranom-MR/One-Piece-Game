@@ -1,0 +1,416 @@
+[
+  {
+    "id": "suke-suke",
+    "name": "Suke Suke no Mi",
+    "romajiName": "Suke Suke no Mi",
+    "englishMeaning": "Fruta da Invisibilidade",
+    "category": "PARAMECIA",
+    "rarity": "common",
+    "description": "Concede a habilidade de tornar o corpo e objetos tocados invisíveis. Passiva estrita: +3% de Esquiva/Agilidade e +2% de Força.",
+    "sellValueInBerries": 95000,
+    "iconPath": "/icons/akuma_suke.png",
+    "spriteUrl": "/icons/akuma_suke.png",
+    "statMultipliers": {
+      "agilityMultiplier": 1.03,
+      "strengthMultiplier": 1.02
+    },
+    "skills": [
+      {
+        "id": "sk-ambush",
+        "name": "Golpe Oculto",
+        "powerModifier": 1.4,
+        "energyCost": 4,
+        "description": "Ataque veloz desferido a partir de um ponto cego completamente invisível."
+      },
+      {
+        "id": "sk-shimmer",
+        "name": "Evasão Espectral",
+        "powerModifier": 1.8,
+        "energyCost": 8,
+        "description": "Distorce a luz e desvia suavemente do golpe adversário contra-atacando."
+      }
+    ]
+  },
+  {
+    "id": "bane-bane",
+    "name": "Bane Bane no Mi",
+    "romajiName": "Bane Bane no Mi",
+    "englishMeaning": "Fruta da Mola",
+    "category": "PARAMECIA",
+    "rarity": "common",
+    "description": "Transforma as pernas e canelas em molas de alta compressão mecânica. Passiva estrita: +5% de Força.",
+    "sellValueInBerries": 100000,
+    "iconPath": "/icons/akuma_bane.png",
+    "spriteUrl": "/icons/akuma_bane.png",
+    "statMultipliers": {
+      "strengthMultiplier": 1.05
+    },
+    "skills": [
+      {
+        "id": "bane-snipe",
+        "name": "Spring Snipe",
+        "powerModifier": 1.5,
+        "energyCost": 5,
+        "description": "Dispara o corpo em velocidade cinética contra o oponente."
+      },
+      {
+        "id": "bane-hopper",
+        "name": "Spring Hopper",
+        "powerModifier": 2.0,
+        "energyCost": 10,
+        "description": "Ricocheteia acumulando ímpeto e esmagando a defesa inimiga."
+      }
+    ]
+  },
+  {
+    "id": "noro-noro",
+    "name": "Noro Noro no Mi",
+    "romajiName": "Noro Noro no Mi",
+    "englishMeaning": "Fruta da Lentidão",
+    "category": "PARAMECIA",
+    "rarity": "common",
+    "description": "Dispara partículas de fótons Noroma que desaceleram a velocidade de qualquer alvo por 30 segundos.",
+    "sellValueInBerries": 105000,
+    "iconPath": "/icons/akuma_noro.png",
+    "spriteUrl": "/icons/akuma_noro.png",
+    "statMultipliers": {
+      "agilityMultiplier": 1.05,
+      "intelligenceMultiplier": 1.05,
+      "fruitPowerMultiplier": 1.05
+    },
+    "skills": [
+      {
+        "id": "noro-beam",
+        "name": "Noro Noro Beam",
+        "powerModifier": 1.4,
+        "energyCost": 4,
+        "description": "Emite feixes de fótons que retardam os reflexos e a velocidade do rival."
+      },
+      {
+        "id": "noro-rush",
+        "name": "Impacto Desacelerado",
+        "powerModifier": 1.9,
+        "energyCost": 9,
+        "description": "Série de golpes acumulados no alvo congelado no tempo."
+      }
+    ]
+  },
+  {
+    "id": "doru-doru",
+    "name": "Doru Doru no Mi",
+    "romajiName": "Doru Doru no Mi",
+    "englishMeaning": "Fruta da Cera",
+    "category": "PARAMECIA",
+    "rarity": "rare",
+    "description": "Permite ao usuário produzir e moldar cera líquida que se solidifica em uma blindagem tão resistente quanto aço. Passiva estrita: +10% de Resistência.",
+    "sellValueInBerries": 210000,
+    "statMultipliers": {
+      "resistanceMultiplier": 1.10
+    },
+    "skills": [
+      {
+        "id": "doru-candle-wall",
+        "name": "Candle Wall",
+        "powerModifier": 1.6,
+        "energyCost": 6,
+        "description": "Ergue uma muralha sólida de cera branca impenetrável que absorve impactos brutais."
+      },
+      {
+        "id": "doru-candle-champion",
+        "name": "Candle Champion",
+        "powerModifier": 2.2,
+        "energyCost": 12,
+        "description": "Reveste o corpo com uma armadura de combate de cera endurecida, desferindo golpes devastadores."
+      }
+    ]
+  },
+  {
+    "id": "neko-neko",
+    "name": "Neko Neko no Mi: Leopardo",
+    "romajiName": "Neko Neko no Mi, Model: Leopard",
+    "englishMeaning": "Fruta do Leopardo",
+    "category": "ZOAN",
+    "rarity": "rare",
+    "description": "Transforma o usuário em um híbrido de leopardo carnívoro voraz, conferindo reflexos predatórios felinos e garras mortais.",
+    "sellValueInBerries": 220000,
+    "statMultipliers": {
+      "agilityMultiplier": 1.05,
+      "strengthMultiplier": 1.05,
+      "intelligenceMultiplier": 1.10,
+      "fruitPowerMultiplier": 1.10
+    },
+    "skills": [
+      {
+        "id": "neko-shigan",
+        "name": "Shigan Predatório",
+        "powerModifier": 1.7,
+        "energyCost": 6,
+        "description": "Perfura o corpo do adversário em velocidade hipersônica com garras afiadas."
+      },
+      {
+        "id": "neko-rokuogan",
+        "name": "Bote do Leopardo",
+        "powerModifier": 2.3,
+        "energyCost": 13,
+        "description": "Investida feroz que rasga as defesas adversárias em salto felino."
+      }
+    ]
+  },
+  {
+    "id": "ushi-ushi",
+    "name": "Ushi Ushi no Mi: Bisão",
+    "romajiName": "Ushi Ushi no Mi, Model: Bison",
+    "englishMeaning": "Fruta do Bisão",
+    "category": "ZOAN",
+    "rarity": "rare",
+    "description": "Concede a robustez e o vigor inabalável de um bisão gigante, aumentando a musculatura e a couraça natural.",
+    "sellValueInBerries": 225000,
+    "statMultipliers": {
+      "strengthMultiplier": 1.05,
+      "resistanceMultiplier": 1.05,
+      "intelligenceMultiplier": 1.10,
+      "fruitPowerMultiplier": 1.10
+    },
+    "skills": [
+      {
+        "id": "ushi-charge",
+        "name": "Investida de Bisão",
+        "powerModifier": 1.6,
+        "energyCost": 6,
+        "description": "Avanço colossal com chifres que desestabiliza qualquer guarda."
+      },
+      {
+        "id": "ushi-stampede",
+        "name": "Pisão Esmagador",
+        "powerModifier": 2.2,
+        "energyCost": 12,
+        "description": "Pisa com fúria titânica no solo rachando as estruturas de combate."
+      }
+    ]
+  },
+  {
+    "id": "gomu-gomu",
+    "name": "Gomu Gomu no Mi",
+    "romajiName": "Gomu Gomu no Mi",
+    "englishMeaning": "Fruta da Borracha",
+    "category": "PARAMECIA",
+    "rarity": "epic",
+    "description": "Concede corpo com propriedades de borracha, conferindo elasticidade infinita, imunidade a contusões e equilíbrio absoluto de combate.",
+    "sellValueInBerries": 380000,
+    "statMultipliers": {
+      "strengthMultiplier": 1.05,
+      "agilityMultiplier": 1.05,
+      "resistanceMultiplier": 1.05,
+      "intelligenceMultiplier": 1.15,
+      "fruitPowerMultiplier": 1.15
+    },
+    "skills": [
+      {
+        "id": "gomu-pistol",
+        "name": "Gomu Gomu no Pistol",
+        "powerModifier": 1.8,
+        "energyCost": 7,
+        "description": "Estica o braço em alta velocidade acertando o inimigo com propulsão elástica."
+      },
+      {
+        "id": "gomu-gatling",
+        "name": "Gomu Gomu no Gatling",
+        "powerModifier": 2.4,
+        "energyCost": 14,
+        "description": "Chuva ininterrupta de socos elásticos de alta cadência."
+      }
+    ]
+  },
+  {
+    "id": "moku-moku",
+    "name": "Moku Moku no Mi",
+    "romajiName": "Moku Moku no Mi",
+    "englishMeaning": "Fruta da Fumaça",
+    "category": "LOGIA",
+    "rarity": "epic",
+    "description": "Permite ao usuário criar, controlar e transformar o próprio corpo em fumaça densa e intangível, tornando-o evasivo e veloz.",
+    "sellValueInBerries": 400000,
+    "statMultipliers": {
+      "agilityMultiplier": 1.15,
+      "intelligenceMultiplier": 1.15,
+      "fruitPowerMultiplier": 1.15
+    },
+    "skills": [
+      {
+        "id": "moku-white-out",
+        "name": "White Out",
+        "powerModifier": 1.7,
+        "energyCost": 7,
+        "description": "Lança torrentes de fumaça densa que envolvem e aprisionam o rival."
+      },
+      {
+        "id": "moku-blow",
+        "name": "White Blow",
+        "powerModifier": 2.3,
+        "energyCost": 13,
+        "description": "Dispara o punho envolto em propulsão de fumaça em alta velocidade."
+      }
+    ]
+  },
+  {
+    "id": "suna-suna",
+    "name": "Suna Suna no Mi",
+    "romajiName": "Suna Suna no Mi",
+    "englishMeaning": "Fruta da Areia",
+    "category": "LOGIA",
+    "rarity": "epic",
+    "description": "Permite controlar e se transformar em areia árida do deserto, desferindo golpes cortantes e tempestades de areia devastadoras.",
+    "sellValueInBerries": 410000,
+    "statMultipliers": {
+      "strengthMultiplier": 1.15,
+      "intelligenceMultiplier": 1.15,
+      "fruitPowerMultiplier": 1.15
+    },
+    "skills": [
+      {
+        "id": "suna-desert-spada",
+        "name": "Desert Spada",
+        "powerModifier": 1.8,
+        "energyCost": 7,
+        "description": "Gera uma lâmina de areia comprimida em alta velocidade que corta o solo."
+      },
+      {
+        "id": "suna-sables",
+        "name": "Sables",
+        "powerModifier": 2.5,
+        "energyCost": 15,
+        "description": "Invoca um furacão furioso de areia dourada que engole a arena."
+      }
+    ]
+  },
+  {
+    "id": "bari-bari",
+    "name": "Bari Bari no Mi",
+    "romajiName": "Bari Bari no Mi",
+    "englishMeaning": "Fruta da Barreira",
+    "category": "PARAMECIA",
+    "rarity": "epic",
+    "description": "Concede o poder de erguer barreiras invisíveis ou translúcidas absolutamente indestrutíveis para bloquear qualquer impacto.",
+    "sellValueInBerries": 420000,
+    "statMultipliers": {
+      "resistanceMultiplier": 1.15,
+      "intelligenceMultiplier": 1.15,
+      "fruitPowerMultiplier": 1.15
+    },
+    "skills": [
+      {
+        "id": "bari-crash",
+        "name": "Barrier Crash",
+        "powerModifier": 1.8,
+        "energyCost": 7,
+        "description": "Avança arremessando a barreira impenetrável contra o inimigo."
+      },
+      {
+        "id": "bari-bull",
+        "name": "Barrier Bull",
+        "powerModifier": 2.4,
+        "energyCost": 14,
+        "description": "Empurra uma muralha translúcida esmagando tudo em sua rota."
+      }
+    ]
+  },
+  {
+    "id": "mera-mera",
+    "name": "Mera Mera no Mi",
+    "romajiName": "Mera Mera no Mi",
+    "englishMeaning": "Fruta das Chamas",
+    "category": "LOGIA",
+    "rarity": "legendary",
+    "description": "Permite criar, controlar e se transformar em fogo elemental vivo de altíssima temperatura, incinerando qualquer ameaça.",
+    "sellValueInBerries": 650000,
+    "statMultipliers": {
+      "strengthMultiplier": 1.10,
+      "agilityMultiplier": 1.05,
+      "resistanceMultiplier": 1.05,
+      "intelligenceMultiplier": 1.25,
+      "fruitPowerMultiplier": 1.25
+    },
+    "skills": [
+      {
+        "id": "mera-hiken",
+        "name": "Hiken (Punho de Fogo)",
+        "powerModifier": 2.2,
+        "energyCost": 10,
+        "description": "Transforma o punho em chamas colossais incinerando o alvo."
+      },
+      {
+        "id": "mera-dai-enka",
+        "name": "Dai Enkai: Entei",
+        "powerModifier": 3.0,
+        "energyCost": 20,
+        "description": "Conjura uma esfera solar de fogo devastadora que incendeia a arena."
+      }
+    ]
+  },
+  {
+    "id": "goro-goro",
+    "name": "Goro Goro no Mi",
+    "romajiName": "Goro Goro no Mi",
+    "englishMeaning": "Fruta do Trovão",
+    "category": "LOGIA",
+    "rarity": "legendary",
+    "description": "Permite criar, controlar e se transformar em eletricidade pura até 200 milhões de volts, movendo-se na velocidade do relâmpago.",
+    "sellValueInBerries": 750000,
+    "statMultipliers": {
+      "strengthMultiplier": 1.075,
+      "agilityMultiplier": 1.075,
+      "resistanceMultiplier": 1.05,
+      "intelligenceMultiplier": 1.25,
+      "fruitPowerMultiplier": 1.25
+    },
+    "skills": [
+      {
+        "id": "goro-el-thor",
+        "name": "El Thor (Julgamento)",
+        "powerModifier": 2.3,
+        "energyCost": 11,
+        "description": "Desaba uma coluna maciça de relâmpagos do céu sobre o adversário."
+      },
+      {
+        "id": "goro-raigo",
+        "name": "Raigo",
+        "powerModifier": 3.2,
+        "energyCost": 22,
+        "description": "Uma esfera colossal de tempestade e raios destruidores."
+      }
+    ]
+  },
+  {
+    "id": "pika-pika",
+    "name": "Pika Pika no Mi",
+    "romajiName": "Pika Pika no Mi",
+    "englishMeaning": "Fruta da Luz",
+    "category": "LOGIA",
+    "rarity": "legendary",
+    "description": "Concede o poder de se transformar e se mover na velocidade da luz, desferindo chutes reflexivos e feixes laser perfurantes.",
+    "sellValueInBerries": 800000,
+    "statMultipliers": {
+      "strengthMultiplier": 1.05,
+      "agilityMultiplier": 1.10,
+      "resistanceMultiplier": 1.05,
+      "intelligenceMultiplier": 1.25,
+      "fruitPowerMultiplier": 1.25
+    },
+    "skills": [
+      {
+        "id": "pika-light-kick",
+        "name": "Chute na Velocidade da Luz",
+        "powerModifier": 2.4,
+        "energyCost": 11,
+        "description": "Desfere um chute luminoso na velocidade da luz criando um raio de impacto fulminante."
+      },
+      {
+        "id": "pika-yasakani",
+        "name": "Yasakani no Magatama",
+        "powerModifier": 3.3,
+        "energyCost": 22,
+        "description": "Dispara uma torrente de partículas de luz perfurantes de altíssima intensidade."
+      }
+    ]
+  }
+]

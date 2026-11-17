@@ -1,0 +1,841 @@
+[
+  {
+    "id": "windmill-village",
+    "name": "Vila dos Moinhos",
+    "chapterNumber": 1,
+    "sea": "East Blue",
+    "description": "Uma vila costeira pacífica com campos verdes e moinhos de vento. Ponto de partida para aspirantes a pirata e berço de grandes lendas.",
+    "recommendedLevel": 1,
+    "icon": "🌾",
+    "themeColor": "emerald",
+    "mapCoordinates": {
+      "x": 13.6,
+      "y": 54
+    },
+    "quests": [
+      {
+        "id": "wm-1",
+        "name": "Ajudar Makino na Taverna",
+        "description": "Limpar balcões e descarregar barris de suco e rum para obter os primeiros Berries e ouvir histórias de marinheiros.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 1,
+        "rewards": {
+          "berriesMin": 40,
+          "berriesMax": 70,
+          "experience": 30
+        }
+      },
+      {
+        "id": "wm-2",
+        "name": "Ronda pelos Moinhos de Vento",
+        "description": "Caminhar pelas colinas ventosas da vila garantindo que nenhum batedor suspeito se aproxime dos armazéns.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 1,
+        "rewards": {
+          "berriesMin": 50,
+          "berriesMax": 85,
+          "experience": 40
+        }
+      },
+      {
+        "id": "wm-3",
+        "name": "Caçar Javalis nas Colinas",
+        "description": "Feras selvagens estão invadindo as hortas dos camponeses. Derrote-as para garantir carne e segurança.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 2,
+        "rewards": {
+          "berriesMin": 70,
+          "berriesMax": 110,
+          "experience": 55
+        }
+      },
+      {
+        "id": "wm-4",
+        "name": "Vigiar o Cais dos Pescadores",
+        "description": "Pequenos ladrões da costa estão sabotando os barcos de pesca. Monte guarda noturna na baía.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 2,
+        "rewards": {
+          "berriesMin": 85,
+          "berriesMax": 130,
+          "experience": 70
+        }
+      },
+      {
+        "id": "wm-5",
+        "name": "Emboscada dos Bandidos da Floresta",
+        "description": "[MINI-CHEFE] O sublíder dos bandidos montou uma barricada na estrada. Quebre a formação e ponha os foras da lei para correr!",
+        "energyCost": 10,
+        "durationSeconds": 0,
+        "recommendedLevel": 3,
+        "isMiniBoss": true,
+        "bossAvatar": "🪓",
+        "rewards": {
+          "berriesMin": 130,
+          "berriesMax": 200,
+          "experience": 110
+        }
+      },
+      {
+        "id": "wm-6",
+        "name": "Escolta da Caravana da Vila",
+        "description": "Acompanhe o transporte de provisões médicas e alimentos das colinas até o centro do vilarejo.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 3,
+        "rewards": {
+          "berriesMin": 105,
+          "berriesMax": 160,
+          "experience": 90
+        }
+      },
+      {
+        "id": "wm-7",
+        "name": "Investigar a Enseada Misteriosa",
+        "description": "Luzes estranhas e baús encalhados foram avistados entre os recifes. Há rumores de um tesouro místico!",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 4,
+        "rewards": {
+          "berriesMin": 140,
+          "berriesMax": 220,
+          "experience": 125
+        }
+      },
+      {
+        "id": "wm-8",
+        "name": "Resistir ao Cerco dos Criminosos",
+        "description": "Os bandidos da montanha cercaram a praça central exigindo tributos. Lute ombro a ombro com os moradores.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 4,
+        "rewards": {
+          "berriesMin": 160,
+          "berriesMax": 250,
+          "experience": 145
+        }
+      },
+      {
+        "id": "wm-9",
+        "name": "Incursão ao Esconderijo da Montanha",
+        "description": "Suba as trilhas rochosas e invada o covil principal dos criminosos para resgatar os reféns e recuperar bens roubados.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 5,
+        "rewards": {
+          "berriesMin": 190,
+          "berriesMax": 300,
+          "experience": 180
+        }
+      },
+      {
+        "id": "wm-10",
+        "name": "Duelo Decisivo: Higuma da Montanha",
+        "description": "[CHEFE FINAL] Higuma desembainha sua lâmina assassina na praia! Derrote o tirano das montanhas para libertar a Vila dos Moinhos e navegar até a próxima ilha!",
+        "energyCost": 10,
+        "durationSeconds": 0,
+        "recommendedLevel": 5,
+        "isBoss": true,
+        "bossAvatar": "🗡️",
+        "rewards": {
+          "berriesMin": 350,
+          "berriesMax": 550,
+          "experience": 300,
+          "fruitDropChance": 0.35
+        }
+      }
+    ],
+    "boss": {
+      "id": "boss-higuma",
+      "name": "Higuma, o Bandido da Montanha",
+      "title": "Líder dos Bandidos da Montanha",
+      "avatar": "🗡️",
+      "attributes": {
+        "strength": 14,
+        "intelligence": 8,
+        "fruitPower": 0,
+        "agility": 10,
+        "resistance": 15
+      },
+      "maxHp": 260,
+      "rewardBerries": 550,
+      "rewardExperience": 300,
+      "bountyIncrease": 500000
+    }
+  },
+  {
+    "id": "orange-town",
+    "name": "Orange Town",
+    "chapterNumber": 2,
+    "sea": "East Blue",
+    "description": "Uma pitoresca cidade portuária tomada pelo bando circense do temível Capitão Buggy. Suas ruas outrora alegres agora ecoam disparos de canhão.",
+    "recommendedLevel": 6,
+    "icon": "🎪",
+    "themeColor": "amber",
+    "mapCoordinates": {
+      "x": 32.2,
+      "y": 54.4
+    },
+    "quests": [
+      {
+        "id": "ot-1",
+        "name": "Desembarque no Cais Sul",
+        "description": "Atracar furtivamente nos cais do sul (South Docks) de Orange Town e neutralizar as sentinelas circenses.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 6,
+        "rewards": {
+          "berriesMin": 180,
+          "berriesMax": 280,
+          "experience": 140
+        }
+      },
+      {
+        "id": "ot-2",
+        "name": "Ronda pelas Barracas e Mercados",
+        "description": "Inspecionar os armazéns e barracas abandonadas, recuperando provisões pilhadas pelo bando dos palhaços.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 6,
+        "rewards": {
+          "berriesMin": 220,
+          "berriesMax": 330,
+          "experience": 170
+        }
+      },
+      {
+        "id": "ot-3",
+        "name": "Investida pela Main Street",
+        "description": "Avançar pela avenida principal da cidade desarmando armadilhas de pólvora e ajudando cidadãos encurralados.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 7,
+        "rewards": {
+          "berriesMin": 260,
+          "berriesMax": 390,
+          "experience": 200
+        }
+      },
+      {
+        "id": "ot-4",
+        "name": "Praça Destroçada da Cidade",
+        "description": "Localizar e desarmar as Bombas Buggy armadas nas praças antes que detonem os prédios históricos da cidade.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 7,
+        "rewards": {
+          "berriesMin": 300,
+          "berriesMax": 450,
+          "experience": 240
+        }
+      },
+      {
+        "id": "ot-5",
+        "name": "Duelo Acrobático: Cabaji",
+        "description": "[MINI-CHEFE] O acrobata Cabaji bloqueia o avanço pedalando em seu monociclo e arremessando lâminas mortais! Derrote-o em combate!",
+        "energyCost": 10,
+        "durationSeconds": 0,
+        "recommendedLevel": 8,
+        "isMiniBoss": true,
+        "bossAvatar": "🎪",
+        "rewards": {
+          "berriesMin": 450,
+          "berriesMax": 650,
+          "experience": 350
+        }
+      },
+      {
+        "id": "ot-6",
+        "name": "Chafariz e Praça Central",
+        "description": "Reconquistar a praça do chafariz central e desobstruir os canais de água para conter incêndios na cidade.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 8,
+        "rewards": {
+          "berriesMin": 350,
+          "berriesMax": 520,
+          "experience": 280
+        }
+      },
+      {
+        "id": "ot-7",
+        "name": "Defender a Pet Shop de Chouchou",
+        "description": "O valente cãozinho Chouchou defende ferozmente a loja de seu falecido dono. Lute ao seu lado contra os saqueadores!",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 9,
+        "rewards": {
+          "berriesMin": 400,
+          "berriesMax": 590,
+          "experience": 320
+        }
+      },
+      {
+        "id": "ot-8",
+        "name": "Resgatar o Prefeito Boodle",
+        "description": "O bravo prefeito marchou sozinho até a colina para desafiar o tirano. Suba até a mansão e impeça que ele seja ferido!",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 9,
+        "rewards": {
+          "berriesMin": 450,
+          "berriesMax": 660,
+          "experience": 360
+        }
+      },
+      {
+        "id": "ot-9",
+        "name": "Tenda do Circo: Mohji e Richie",
+        "description": "[MINI-CHEFE] Mohji, o Domador, surge na grande tenda de circo montado no colossal leão Richie! Quebre as presas da fera!",
+        "energyCost": 10,
+        "durationSeconds": 0,
+        "recommendedLevel": 10,
+        "isMiniBoss": true,
+        "bossAvatar": "🦁",
+        "rewards": {
+          "berriesMin": 600,
+          "berriesMax": 850,
+          "experience": 460
+        }
+      },
+      {
+        "id": "ot-10",
+        "name": "Duelo Final: Buggy, o Palhaço Estrela",
+        "description": "[CHEFE FINAL] No telhado do Quartel-General, Buggy desembainha suas adagas com truques mortais! Derrube o palhaço e liberte Orange Town!",
+        "energyCost": 10,
+        "durationSeconds": 0,
+        "recommendedLevel": 10,
+        "isBoss": true,
+        "bossAvatar": "🤡",
+        "rewards": {
+          "berriesMin": 900,
+          "berriesMax": 1400,
+          "experience": 650,
+          "fruitDropChance": 0.35
+        }
+      }
+    ],
+    "boss": {
+      "id": "boss-buggy",
+      "name": "Buggy, o Palhaço Estrela",
+      "title": "Capitão do Bando dos Palhaços",
+      "avatar": "🤡",
+      "attributes": {
+        "strength": 20,
+        "intelligence": 18,
+        "fruitPower": 24,
+        "agility": 18,
+        "resistance": 22
+      },
+      "maxHp": 420,
+      "rewardBerries": 1400,
+      "rewardExperience": 650,
+      "bountyIncrease": 1500000
+    }
+  },
+  {
+    "id": "syrup-village",
+    "name": "Vila Syrup",
+    "chapterNumber": 3,
+    "sea": "East Blue",
+    "description": "Uma vila arborizada e pacífica cercada por penhascos. Um ardiloso plano pirata ameaça a vida da jovem herdeira Kaya.",
+    "recommendedLevel": 11,
+    "icon": "🌿",
+    "themeColor": "emerald",
+    "mapCoordinates": {
+      "x": 50.8,
+      "y": 54.7
+    },
+    "quests": [
+      {
+        "id": "sy-1",
+        "name": "Vigilância na Encosta dos Penhascos",
+        "description": "Rastrear pegadas na ladeira íngreme que leva à praia deserta.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 11,
+        "rewards": {
+          "berriesMin": 120,
+          "berriesMax": 190,
+          "experience": 95
+        }
+      },
+      {
+        "id": "sy-2",
+        "name": "Proteger os Jardins da Mansão",
+        "description": "Espantar capangas infiltrados disfarçados de jardineiros e entregadores.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 11,
+        "rewards": {
+          "berriesMin": 140,
+          "berriesMax": 220,
+          "experience": 115
+        }
+      },
+      {
+        "id": "sy-3",
+        "name": "Emboscada no Declive Norte",
+        "description": "Derrubar árvores e espalhar óleo na rampa para conter a subida dos invasores.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 12,
+        "rewards": {
+          "berriesMin": 165,
+          "berriesMax": 255,
+          "experience": 135
+        }
+      },
+      {
+        "id": "sy-4",
+        "name": "Neutralizar os Piratas do Gato Preto",
+        "description": "Combater os marujos selvagens armados com adagas e garras de escalada.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 12,
+        "rewards": {
+          "berriesMin": 185,
+          "berriesMax": 280,
+          "experience": 155
+        }
+      },
+      {
+        "id": "sy-5",
+        "name": "Duelo Hipnótico: Jango, o Ilusionista",
+        "description": "[MINI-CHEFE] O imediato Jango gira seus pêndulos cortantes e tenta hipnotizar seus aliados! Mantenha os olhos firmes!",
+        "energyCost": 10,
+        "durationSeconds": 0,
+        "recommendedLevel": 13,
+        "isMiniBoss": true,
+        "bossAvatar": "🕶️",
+        "rewards": {
+          "berriesMin": 280,
+          "berriesMax": 420,
+          "experience": 240
+        }
+      },
+      {
+        "id": "sy-6",
+        "name": "Proteger a Fuga de Kaya",
+        "description": "Criar uma rota de fuga segura através dos bosques de pinheiros para a herdeira da mansão.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 13,
+        "rewards": {
+          "berriesMin": 210,
+          "berriesMax": 320,
+          "experience": 180
+        }
+      },
+      {
+        "id": "sy-7",
+        "name": "Combate contra os Irmãos Nyaban",
+        "description": "Enfrentar a dupla de assassinos felinos que atacam em sincronia com manoplas curvas.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 14,
+        "rewards": {
+          "berriesMin": 240,
+          "berriesMax": 360,
+          "experience": 210
+        }
+      },
+      {
+        "id": "sy-8",
+        "name": "Desarmar as Armadilhas da Floresta",
+        "description": "Cortar redes e estacas ocultas espalhadas pelos piratas nos caminhos de terra.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 14,
+        "rewards": {
+          "berriesMin": 225,
+          "berriesMax": 340,
+          "experience": 195
+        }
+      },
+      {
+        "id": "sy-9",
+        "name": "Cerco à Mansão de Pedra",
+        "description": "Expulsar os últimos invasores do grande hall e defender os portões principais.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 15,
+        "rewards": {
+          "berriesMin": 290,
+          "berriesMax": 440,
+          "experience": 260
+        }
+      },
+      {
+        "id": "sy-10",
+        "name": "Ataque Silencioso: Capitão Kuro",
+        "description": "[CHEFE FINAL] O infame Capitão Kuro abandona o disfarce de mordomo e usa suas 10 garras mortais e passos silenciosos! Derrote-o para salvar Syrup!",
+        "energyCost": 10,
+        "durationSeconds": 0,
+        "recommendedLevel": 15,
+        "isBoss": true,
+        "bossAvatar": "🐾",
+        "rewards": {
+          "berriesMin": 650,
+          "berriesMax": 1000,
+          "experience": 500
+        }
+      }
+    ],
+    "boss": {
+      "id": "boss-kuro",
+      "name": "Capitão Kuro das Cem Artimanhas",
+      "title": "Líder dos Piratas do Gato Preto",
+      "avatar": "🐾",
+      "attributes": {
+        "strength": 24,
+        "intelligence": 28,
+        "fruitPower": 0,
+        "agility": 32,
+        "resistance": 22
+      },
+      "maxHp": 650,
+      "rewardBerries": 1000,
+      "rewardExperience": 500,
+      "bountyIncrease": 3000000
+    }
+  },
+  {
+    "id": "baratie",
+    "name": "Restaurante Baratie",
+    "chapterNumber": 4,
+    "sea": "East Blue",
+    "description": "O famoso restaurante flutuante em formato de peixe fundeado em alto mar. Cozinheiros durões servem comida de elite enquanto repelem marinheiros e piratas.",
+    "recommendedLevel": 16,
+    "icon": "🍖",
+    "themeColor": "sky",
+    "mapCoordinates": {
+      "x": 68.5,
+      "y": 54.8
+    },
+    "quests": [
+      {
+        "id": "ba-1",
+        "name": "Atracar no Convés dos Cozinheiros",
+        "description": "Amarrar o navio nas quilhas do Baratie e experimentar um prato revigorante nas mesas de bordo.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 16,
+        "rewards": {
+          "berriesMin": 180,
+          "berriesMax": 280,
+          "experience": 150
+        }
+      },
+      {
+        "id": "ba-2",
+        "name": "Repelir Marinheiros Insolentes",
+        "description": "Oficiais arrogantes da Marinha recusam pagar a conta. Ensine boas maneiras a eles no convés exterior.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 16,
+        "rewards": {
+          "berriesMin": 200,
+          "berriesMax": 310,
+          "experience": 170
+        }
+      },
+      {
+        "id": "ba-3",
+        "name": "Pesca de Feras Marinhas Famintas",
+        "description": "Ajudar os chefs a pescar caranguejos colossais e peixes de combate para o banquete da noite.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 17,
+        "rewards": {
+          "berriesMin": 230,
+          "berriesMax": 350,
+          "experience": 200
+        }
+      },
+      {
+        "id": "ba-4",
+        "name": "O Navio Destroçado da Armada",
+        "description": "A nau capitânia de Don Krieg retorna da temida Grand Line completamente partida ao meio. Investigue os destroços.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 17,
+        "rewards": {
+          "berriesMin": 220,
+          "berriesMax": 340,
+          "experience": 190
+        }
+      },
+      {
+        "id": "ba-5",
+        "name": "Duelo de Honra: Gin dos Olhos Demoníacos",
+        "description": "[MINI-CHEFE] Gin brande seus bastões com esferas de aço pesadas! Um combate de técnica e honra nas tábuas molhadas.",
+        "energyCost": 10,
+        "durationSeconds": 0,
+        "recommendedLevel": 18,
+        "isMiniBoss": true,
+        "bossAvatar": "🥋",
+        "rewards": {
+          "berriesMin": 360,
+          "berriesMax": 550,
+          "experience": 310
+        }
+      },
+      {
+        "id": "ba-6",
+        "name": "Conter o Incêndio no Casco",
+        "description": "Balas incendiárias da frota de Krieg atingiram a cozinha central. Apague o fogo e salve as despensas.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 18,
+        "rewards": {
+          "berriesMin": 260,
+          "berriesMax": 390,
+          "experience": 230
+        }
+      },
+      {
+        "id": "ba-7",
+        "name": "Batalha nas Barbatanas de Combate",
+        "description": "As plataformas laterais do Baratie foram baixadas! Lute contra dezenas de piratas famintos em pleno oceano.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 19,
+        "rewards": {
+          "berriesMin": 310,
+          "berriesMax": 460,
+          "experience": 270
+        }
+      },
+      {
+        "id": "ba-8",
+        "name": "Derrubar Pearl da Parede de Ferro",
+        "description": "Um guerreiro protegido por escudos maciços e fagulhas de fogo tenta afundar o restaurante flutuante.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 19,
+        "rewards": {
+          "berriesMin": 330,
+          "berriesMax": 490,
+          "experience": 290
+        }
+      },
+      {
+        "id": "ba-9",
+        "name": "Desviar do Gás Venenoso MH5",
+        "description": "Don Krieg dispara sua bomba química covarde. Use panos molhados e avance contra a linha de fogo.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 20,
+        "rewards": {
+          "berriesMin": 370,
+          "berriesMax": 540,
+          "experience": 330
+        }
+      },
+      {
+        "id": "ba-10",
+        "name": "Armadura de Ouro: Don Krieg",
+        "description": "[CHEFE FINAL] O Almirante dos Mares veste sua armadura dourada reforçada com lanças explosivas e metralhadoras! Destrua o aço de Krieg e salve o Baratie!",
+        "energyCost": 10,
+        "durationSeconds": 0,
+        "recommendedLevel": 20,
+        "isBoss": true,
+        "bossAvatar": "🛡️",
+        "rewards": {
+          "berriesMin": 850,
+          "berriesMax": 1300,
+          "experience": 620
+        }
+      }
+    ],
+    "boss": {
+      "id": "boss-krieg",
+      "name": "Don Krieg, o Almirante dos Mares",
+      "title": "Comandante da Frota Pirata do East Blue",
+      "avatar": "🛡️",
+      "attributes": {
+        "strength": 34,
+        "intelligence": 20,
+        "fruitPower": 0,
+        "agility": 22,
+        "resistance": 38
+      },
+      "maxHp": 950,
+      "rewardBerries": 1300,
+      "rewardExperience": 620,
+      "bountyIncrease": 5000000
+    }
+  },
+  {
+    "id": "arlong-park",
+    "name": "Arlong Park",
+    "chapterNumber": 5,
+    "sea": "East Blue",
+    "description": "O complexo imperial dos Homens-Peixe que oprime o Arquipélago de Konomi. Uma fortaleza aquática onde humanos são considerados inferiores.",
+    "recommendedLevel": 21,
+    "icon": "🦈",
+    "themeColor": "indigo",
+    "mapCoordinates": {
+      "x": 85.9,
+      "y": 54.4
+    },
+    "quests": [
+      {
+        "id": "ap-1",
+        "name": "Desembarque na Ilha de Conomi",
+        "description": "Testemunhar vilarejos inteiros com casas viradas de cabeça para baixo pelo poder monstruoso dos Homens-Peixe.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 21,
+        "rewards": {
+          "berriesMin": 250,
+          "berriesMax": 380,
+          "experience": 210
+        }
+      },
+      {
+        "id": "ap-2",
+        "name": "Resgate da Vila Kokoyashi",
+        "description": "Impedir que cobradores armados confisquem os últimos pertences e pomares de tangerina dos moradores.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 21,
+        "rewards": {
+          "berriesMin": 270,
+          "berriesMax": 410,
+          "experience": 230
+        }
+      },
+      {
+        "id": "ap-3",
+        "name": "Confrontar a Marinha Corrupta (Nezumi)",
+        "description": "O comodoro corrupto Nezumi veio confiscar o dinheiro reunido para a libertação da ilha. Dê uma surra nele!",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 22,
+        "rewards": {
+          "berriesMin": 310,
+          "berriesMax": 460,
+          "experience": 270
+        }
+      },
+      {
+        "id": "ap-4",
+        "name": "Derrubar os Portões do Parque",
+        "description": "Marchar com a população furiosa e quebrar os portões maciços com o brasão do tubarão dente-de-serra.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 22,
+        "rewards": {
+          "berriesMin": 340,
+          "berriesMax": 500,
+          "experience": 300
+        }
+      },
+      {
+        "id": "ap-5",
+        "name": "Dupla Fatal: Kuroobi e Chew",
+        "description": "[MINI-CHEFE] Kuroobi aplica o temido Karatê Homem-Peixe enquanto Chew dispara rajadas de água como canhões de alta pressão!",
+        "energyCost": 10,
+        "durationSeconds": 0,
+        "recommendedLevel": 23,
+        "isMiniBoss": true,
+        "bossAvatar": "🥋",
+        "rewards": {
+          "berriesMin": 500,
+          "berriesMax": 750,
+          "experience": 450
+        }
+      },
+      {
+        "id": "ap-6",
+        "name": "Combate nas Piscinas Internas",
+        "description": "Lutar sobre pontes estreitas evitando ser puxado para a água onde a força dos homens-peixe decuplica.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 23,
+        "rewards": {
+          "berriesMin": 380,
+          "berriesMax": 560,
+          "experience": 340
+        }
+      },
+      {
+        "id": "ap-7",
+        "name": "Duelo das Seis Espadas: Hatchan",
+        "description": "O simpático porém feroz homem-peixe polvo brande espadas pesadíssimas com seus múltiplos tentáculos.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 24,
+        "rewards": {
+          "berriesMin": 420,
+          "berriesMax": 620,
+          "experience": 380
+        }
+      },
+      {
+        "id": "ap-8",
+        "name": "Incursão à Sala de Cartografia",
+        "description": "Subir ao topo da torre imperial e encontrar anos de mapas de navegação desenhados sob lágrimas e escravidão.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 24,
+        "rewards": {
+          "berriesMin": 450,
+          "berriesMax": 670,
+          "experience": 410
+        }
+      },
+      {
+        "id": "ap-9",
+        "name": "Destruir a Torre do Tirano",
+        "description": "Golpear as colunas estruturais do palácio para quebrar os símbolos de opressão do parque.",
+        "energyCost": 10,
+        "durationSeconds": 3600,
+        "recommendedLevel": 25,
+        "rewards": {
+          "berriesMin": 520,
+          "berriesMax": 780,
+          "experience": 480
+        }
+      },
+      {
+        "id": "ap-10",
+        "name": "Guerra do Mar: Arlong da Serra",
+        "description": "[CHEFE FINAL] O dente-de-serra Arlong ataca com fúria implacável e sua espada Kiribachi gigante! Destrua o monstro do East Blue e liberte o mar para sempre!",
+        "energyCost": 10,
+        "durationSeconds": 0,
+        "recommendedLevel": 25,
+        "isBoss": true,
+        "bossAvatar": "🦈",
+        "rewards": {
+          "berriesMin": 1200,
+          "berriesMax": 2000,
+          "experience": 900
+        }
+      }
+    ],
+    "boss": {
+      "id": "boss-arlong",
+      "name": "Arlong da Serra",
+      "title": "Capitão dos Piratas do Homem-Peixe",
+      "avatar": "🦈",
+      "attributes": {
+        "strength": 45,
+        "intelligence": 24,
+        "fruitPower": 0,
+        "agility": 30,
+        "resistance": 48
+      },
+      "maxHp": 1400,
+      "rewardBerries": 2000,
+      "rewardExperience": 900,
+      "bountyIncrease": 10000000
+    }
+  }
+]
